@@ -1,0 +1,17 @@
+# Xschem temporary / backup files
+*.sch~
+*.sym~
+*.bak
+*.raw
+
+# ngspice simulation outputs
+*.log
+*.out
+
+# Editor temporary files
+*~
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
