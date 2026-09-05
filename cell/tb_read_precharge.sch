@@ -48,10 +48,30 @@ N 1010 -220 1060 -220 {lab=VSS}
 N 1110 -220 1160 -220 {lab=VDD}
 N 1200 -220 1250 -220 {lab=WEB}
 N 910 -220 970 -220 {lab=WE}
+N 200 -1050 200 -1000 {lab=VDD}
+N 200 -1050 360 -1050 {lab=VDD}
+N 360 -1050 360 -1000 {lab=VDD}
+N 280 -1120 280 -1050 {lab=VDD}
+N 200 -940 200 -860 {lab=BL}
+N 360 -940 360 -860 {lab=BLB}
+N 240 -970 320 -970 {lab=PCB}
+N 280 -970 280 -860 {lab=PCB}
+N 360 -970 420 -970 {lab=VDD}
+N 420 -1020 420 -970 {lab=VDD}
+N 360 -1020 420 -1020 {lab=VDD}
+N 140 -970 200 -970 {lab=VDD}
+N 140 -1020 140 -970 {lab=VDD}
+N 140 -1020 200 -1020 {lab=VDD}
+N 550 -1040 550 -1010 {lab=PCB}
+N 550 -950 550 -900 {lab=0}
+N 940 -1040 940 -1010 {lab=BL}
+N 940 -950 940 -920 {lab=0}
+N 1070 -1040 1070 -1010 {lab=BLB}
+N 1070 -950 1070 -920 {lab=0}
 C {devices/vsource.sym} 80 -660 0 0 {name=VVDD value=5 savecurrent=false}
 C {devices/lab_pin.sym} 80 -720 0 0 {name=p1 sig_type=std_logic lab=VDD}
 C {devices/gnd.sym} 80 -580 0 0 {name=l1 lab=0}
-C {devices/vsource.sym} 300 -660 0 0 {name=VWL value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 45n 0)" savecurrent=false}
+C {devices/vsource.sym} 300 -660 0 0 {name=VWL value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 24.9n 0 25n 5 34.9n 5 35n 0 70n 0)" savecurrent=false}
 C {devices/lab_pin.sym} 300 -720 0 0 {name=p2 sig_type=std_logic lab=WL}
 C {devices/gnd.sym} 300 -580 0 0 {name=l2 lab=0}
 C {devices/lab_pin.sym} 60 -420 0 0 {name=p3 sig_type=std_logic lab=WL}
@@ -143,3 +163,48 @@ C {devices/lab_pin.sym} 910 -220 1 0 {name=p21 sig_type=std_logic lab=WE}
 C {devices/lab_pin.sym} 1250 -220 1 0 {name=p22 sig_type=std_logic lab=WEB}
 C {devices/lab_pin.sym} 1080 -340 1 0 {name=p23 sig_type=std_logic lab=BLB}
 C {devices/lab_pin.sym} 1080 -100 3 0 {name=p24 sig_type=std_logic lab=WBLB}
+C {TR-1umLIB/MP.sym} 240 -970 0 1 {name=XM5
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {TR-1umLIB/MP.sym} 320 -970 0 0 {name=XM6
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {devices/lab_pin.sym} 200 -860 0 0 {name=p25 sig_type=std_logic lab=BL}
+C {devices/lab_pin.sym} 360 -860 0 1 {name=p26 sig_type=std_logic lab=BLB}
+C {devices/lab_pin.sym} 280 -860 0 1 {name=p27 sig_type=std_logic lab=PCB}
+C {devices/lab_pin.sym} 280 -1120 0 1 {name=p28 sig_type=std_logic lab=VDD}
+C {devices/vsource.sym} 550 -980 0 0 {name=VPCB value="PWL(0 5 14.9n 5 15n 0 19.9n 0 20n 5 70n 5)" savecurrent=false}
+C {devices/lab_pin.sym} 550 -1040 0 0 {name=p29 sig_type=std_logic lab=PCB}
+C {devices/gnd.sym} 550 -900 0 0 {name=l8 lab=0}
+C {devices/capa.sym} 940 -980 0 0 {name=C1
+m=1
+value=50f
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} 940 -920 0 0 {name=l9 lab=0}
+C {devices/lab_pin.sym} 940 -1040 0 0 {name=CBL sig_type=std_logic lab=BL}
+C {devices/capa.sym} 1070 -980 0 0 {name=C2
+m=1
+value=50f
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} 1070 -920 0 0 {name=l10 lab=0}
+C {devices/lab_pin.sym} 1070 -1040 0 0 {name=CBLB sig_type=std_logic lab=BLB}
