@@ -1,0 +1,17 @@
+v {xschem version=3.4.8 file_version=1.2}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=X1"}
+V {}
+S {}
+E {}
+B 4 0 -80 180 80 {fill=false}
+B 5 -10 -50 10 -30 {name=DIN dir=in pinnumber=1}
+B 5 -10 -10 10 10 {name=CE dir=in pinnumber=2}
+B 5 -10 30 10 50 {name=WE dir=in pinnumber=3}
+B 5 170 -50 190 -30 {name=BL dir=inout pinnumber=4}
+B 5 170 30 190 50 {name=BLB dir=inout pinnumber=5}
+B 5 55 -90 75 -70 {name=VDD dir=inout pinnumber=6}
+B 5 105 70 125 90 {name=VSS dir=inout pinnumber=7}
+T {WRITE DRIVER} 30 -8 0 0 0.28 0.28 {}
+T {@name} 68 30 0 0 0.20 0.20 {}
