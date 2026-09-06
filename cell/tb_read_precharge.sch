@@ -88,7 +88,6 @@ C {devices/lab_pin.sym} 420 -360 0 1 {name=p9 sig_type=std_logic lab=VSS}
 C {devices/vsource.sym} 200 -660 0 0 {name=VVSS value=0 savecurrent=false}
 C {devices/lab_pin.sym} 200 -720 0 0 {name=p10 sig_type=std_logic lab=VSS}
 C {devices/gnd.sym} 200 -580 0 0 {name=l5 lab=0}
-C {sram6t_tr10.sym} 240 -390 0 0 {name=x1}
 C {devices/code.sym} 580 -570 0 0 {name=TR-1um_MODELS
 only_toplevel=true
 format="tcleval( @value )"
@@ -208,3 +207,4 @@ footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 1070 -920 0 0 {name=l10 lab=0}
 C {devices/lab_pin.sym} 1070 -1040 0 0 {name=CBLB sig_type=std_logic lab=BLB}
+C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 240 -390 0 0 {name=x1}
