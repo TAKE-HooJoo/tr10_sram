@@ -153,10 +153,10 @@ C {sram_2w2b.sym} 320 -210 0 0 {name=x1}
 C {devices/lab_pin.sym} 120 -260 0 0 {name=p1 sig_type=std_logic lab=WL0}
 C {devices/lab_pin.sym} 120 -240 0 0 {name=p2 sig_type=std_logic lab=WL1}
 C {devices/lab_pin.sym} 500 -240 0 1 {name=p3 sig_type=std_logic lab=VDD}
-C {devices/vsource.sym} 180 -610 0 0 {name=VWL0 value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 24.9n 0 25n 5 34.9n 5 35n 0 70n 0)" savecurrent=false}
+C {devices/vsource.sym} 180 -610 0 0 {name=VWL0 value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 44.9n 0 45n 5 54.9n 5 55n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 180 -530 0 0 {name=l2 lab=0}
 C {devices/lab_pin.sym} 180 -690 0 0 {name=p4 sig_type=std_logic lab=WL0}
-C {devices/vsource.sym} 180 -400 0 0 {name=VWL1 value=0 savecurrent=false}
+C {devices/vsource.sym} 180 -400 0 0 {name=VWL1 value="PWL(0 0 19.9n 0 20n 5 29.9n 5 30n 0 69.9n 0 70n 5 79.9n 5 80n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 180 -320 0 0 {name=l3 lab=0}
 C {devices/lab_pin.sym} 180 -480 0 0 {name=p5 sig_type=std_logic lab=WL1}
 C {devices/vsource.sym} 690 -400 0 0 {name=VVDD value=5 savecurrent=false}
@@ -286,16 +286,16 @@ C {devices/lab_pin.sym} 1270 -200 1 0 {name=p31 sig_type=std_logic lab=WE}
 C {devices/lab_pin.sym} 1610 -200 1 0 {name=p32 sig_type=std_logic lab=WEB}
 C {devices/lab_pin.sym} 1440 -320 1 0 {name=p33 sig_type=std_logic lab=BLB1}
 C {devices/lab_pin.sym} 1440 -80 3 0 {name=p34 sig_type=std_logic lab=WBLB1}
-C {devices/vsource.sym} 220 -870 0 0 {name=VWBL0 value=5 savecurrent=false}
+C {devices/vsource.sym} 220 -870 0 0 {name=VWBL0 value="PWL(0 5 19.9n 5 20n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 220 -790 0 0 {name=l5 lab=0}
 C {devices/lab_pin.sym} 220 -950 0 0 {name=p35 sig_type=std_logic lab=WBL0}
-C {devices/vsource.sym} 360 -870 0 0 {name=VWBLB0 value=0 savecurrent=false}
+C {devices/vsource.sym} 360 -870 0 0 {name=VWBLB0 value="PWL(0 0 19.9n 0 20n 5 100n 5)" savecurrent=false}
 C {devices/gnd.sym} 360 -790 0 0 {name=l6 lab=0}
 C {devices/lab_pin.sym} 360 -950 0 0 {name=p36 sig_type=std_logic lab=WBLB0}
-C {devices/vsource.sym} 520 -870 0 0 {name=VWBL1 value=0 savecurrent=false}
+C {devices/vsource.sym} 520 -870 0 0 {name=VWBL1 value="PWL(0 0 19.9n 0 20n 5 100n 5)" savecurrent=false}
 C {devices/gnd.sym} 520 -790 0 0 {name=l7 lab=0}
 C {devices/lab_pin.sym} 520 -950 0 0 {name=p37 sig_type=std_logic lab=WBL1}
-C {devices/vsource.sym} 670 -870 0 0 {name=VWBLB1 value=5 savecurrent=false}
+C {devices/vsource.sym} 670 -870 0 0 {name=VWBLB1 value="PWL(0 5 19.9n 5 20n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 670 -790 0 0 {name=l8 lab=0
 value=1}
 C {devices/lab_pin.sym} 670 -950 0 0 {name=p38 sig_type=std_logic lab=WBLB1}
@@ -303,10 +303,10 @@ C {devices/vsource.sym} 840 -400 0 0 {name=VVSS value=0 savecurrent=false}
 C {devices/gnd.sym} 840 -320 0 0 {name=l9 lab=0}
 C {devices/lab_pin.sym} 840 -480 0 0 {name=p43 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 500 -160 0 1 {name=p39 sig_type=std_logic lab=VSS}
-C {devices/vsource.sym} 240 -1200 0 0 {name=VWE value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 70n 0)" savecurrent=false}
+C {devices/vsource.sym} 240 -1200 0 0 {name=VWE value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 19.9n 0 20n 5 29.9n 5 30n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 240 -1120 0 0 {name=l1 lab=0}
 C {devices/lab_pin.sym} 240 -1280 0 0 {name=p40 sig_type=std_logic lab=WE}
-C {devices/vsource.sym} 570 -1200 0 0 {name=VWEB value="PWL(0 5 4.9n 5 5n 0 14.9n 0 15n 5 70n 5)" savecurrent=false}
+C {devices/vsource.sym} 570 -1200 0 0 {name=VWEB value="PWL(0 5 4.9n 5 5n 0 14.9n 0 15n 5 19.9n 5 20n 0 29.9n 0 30n 5 100n 5)" savecurrent=false}
 C {devices/gnd.sym} 570 -1120 0 0 {name=l10 lab=0}
 C {devices/lab_pin.sym} 570 -1280 0 0 {name=p41 sig_type=std_logic lab=WEB}
 C {devices/code.sym} 1810 -670 0 0 {name=TR-1um_MODELS
@@ -315,7 +315,10 @@ format="tcleval( @value )"
 value=".include $::LIB/ip62_models"
 spice_ignore=false}
 C {devices/code_shown.sym} 1790 -390 0 0 {name=SPICE only_toplevel=false value="
-.tran 10p 70n
+.tran 10p 100n
+
+.meas tran t_read0 TRIG v(wl0) VAL=2.5 RISE=2 TARG v(dout0) VAL=2.5 RISE=1 TD=40n
+.meas tran t_read1 TRIG v(wl1) VAL=2.5 RISE=2 TARG v(dout1) VAL=2.5 RISE=1 TD=65n
 
 "}
 C {TR-1umLIB/MP.sym} 1080 -1000 0 1 {name=XM9
@@ -462,9 +465,9 @@ ps=0
 pd=0
 nrd=0
 nrs=0}
-C {devices/vsource.sym} 380 -1490 0 0 {name=VPCB value="PWL(0 5 14.9n 5 15n 0 19.9n 0 20n 5 70n 5)" savecurrent=false}
+C {devices/vsource.sym} 380 -1490 0 0 {name=VPCB value="PWL(0 5 34.9n 5 35n 0 39.9n 0 40n 5 59.9n 5 60n 0 64.9n 0 65n 5 100n 5)" savecurrent=false}
 C {devices/lab_pin.sym} 380 -1550 0 0 {name=p65 sig_type=std_logic lab=PCB}
 C {devices/gnd.sym} 380 -1410 0 0 {name=l13 lab=0}
-C {devices/vsource.sym} 360 -1820 0 0 {name=VEQ value="PWL(0 0 14.9n 0 15n 5 19.9n 5 20n 0 70n 0)" savecurrent=false}
+C {devices/vsource.sym} 360 -1820 0 0 {name=VEQ value="PWL(0 0 34.9n 0 35n 5 39.9n 5 40n 0 59.9n 0 60n 5 64.9n 5 65n 0 100n 0)" savecurrent=false}
 C {devices/lab_pin.sym} 360 -1880 0 0 {name=p66 sig_type=std_logic lab=EQEN}
 C {devices/gnd.sym} 360 -1740 0 0 {name=l14 lab=0}

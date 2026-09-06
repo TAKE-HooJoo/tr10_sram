@@ -80,3 +80,15 @@ Measured read delay:
 For the current small SRAM testbench, the CMOS read buffer
 provides a simpler and faster read path than the evaluated
 5T sense amplifier.
+
+2word x 2bit SRAM Read Buffer verification
+
+Word0 = 10
+Word1 = 01
+
+Read Word0 -> DOUT = 10
+Read Word1 -> DOUT = 01
+
+Read access time:
+Word0 : 0.9958 ns
+Word1 : 0.9954 ns
