@@ -92,3 +92,22 @@ Read Word1 -> DOUT = 01
 Read access time:
 Word0 : 0.9958 ns
 Word1 : 0.9954 ns
+
+2word × 2bit SRAM integrated verification
+
+Word decoder:
+  WLE=0        → WL0=0, WL1=0
+  WLE=1,A0=0   → Word0 selected
+  WLE=1,A0=1   → Word1 selected
+
+Write:
+  Word0 = 10
+  Word1 = 01
+
+Read:
+  Word0 → 10 PASS
+  Word1 → 01 PASS
+
+Read access time:
+  Word0 = 1.2475 ns
+  Word1 = 1.2461 ns
