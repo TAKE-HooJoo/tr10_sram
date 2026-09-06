@@ -61,3 +61,22 @@ therefore reasonable for the current testbench.
 Note: These results are based on nominal, symmetric transistor
 models. Practical sense-amplifier sensitivity must later be
 verified with PVT and device mismatch analysis.
+
+### CMOS Read Buffer Evaluation
+
+- Read buffer: CMOS inverter
+- PMOS W/L = 6.8u / 1u
+- NMOS W/L = 3.4u / 1u
+- BLB capacitance = 50 fF
+
+Measured read delay:
+
+| Parameter | Value |
+|---|---:|
+| WL 50% crossing | 24.950 ns |
+| DOUT 50% crossing | 26.041 ns |
+| Read delay | 1.091 ns |
+
+For the current small SRAM testbench, the CMOS read buffer
+provides a simpler and faster read path than the evaluated
+5T sense amplifier.
