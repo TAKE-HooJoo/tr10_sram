@@ -23,6 +23,42 @@ N 160 -1280 160 -1230 {lab=0}
 N 160 -1390 160 -1340 {lab=WE}
 N 490 -1280 490 -1230 {lab=0}
 N 490 -1390 490 -1340 {lab=WEB}
+N 1040 -1080 1040 -1030 {lab=VDD}
+N 1040 -1080 1200 -1080 {lab=VDD}
+N 1200 -1080 1200 -1030 {lab=VDD}
+N 1120 -1150 1120 -1080 {lab=VDD}
+N 1040 -970 1040 -890 {lab=BL0}
+N 1200 -970 1200 -890 {lab=BLB0}
+N 1080 -1000 1160 -1000 {lab=PCB}
+N 1120 -1000 1120 -890 {lab=PCB}
+N 1200 -1000 1260 -1000 {lab=VDD}
+N 1260 -1050 1260 -1000 {lab=VDD}
+N 1200 -1050 1260 -1050 {lab=VDD}
+N 980 -1000 1040 -1000 {lab=VDD}
+N 980 -1050 980 -1000 {lab=VDD}
+N 980 -1050 1040 -1050 {lab=VDD}
+N 1150 -1290 1230 -1290 {lab=BLB0}
+N 1020 -1290 1090 -1290 {lab=BL0}
+N 1120 -1250 1120 -1220 {lab=EQEN}
+N 1120 -1360 1120 -1290 {lab=VSS}
+N 1460 -1080 1460 -1030 {lab=VDD}
+N 1460 -1080 1620 -1080 {lab=VDD}
+N 1620 -1080 1620 -1030 {lab=VDD}
+N 1540 -1150 1540 -1080 {lab=VDD}
+N 1460 -970 1460 -890 {lab=BL1}
+N 1620 -970 1620 -890 {lab=BLB1}
+N 1500 -1000 1580 -1000 {lab=PCB}
+N 1540 -1000 1540 -890 {lab=PCB}
+N 1620 -1000 1680 -1000 {lab=VDD}
+N 1680 -1050 1680 -1000 {lab=VDD}
+N 1620 -1050 1680 -1050 {lab=VDD}
+N 1400 -1000 1460 -1000 {lab=VDD}
+N 1400 -1050 1400 -1000 {lab=VDD}
+N 1400 -1050 1460 -1050 {lab=VDD}
+N 1570 -1290 1650 -1290 {lab=BLB1}
+N 1440 -1290 1510 -1290 {lab=BL1}
+N 1540 -1250 1540 -1220 {lab=EQEN}
+N 1540 -1360 1540 -1290 {lab=VSS}
 N 1130 -1780 1130 -1680 {lab=DOUT0}
 N 1050 -1810 1090 -1810 {lab=BLB0}
 N 1050 -1810 1050 -1650 {lab=BLB0}
@@ -77,14 +113,6 @@ N 1080 -480 1130 -480 {lab=DIN0}
 N 1080 -460 1130 -460 {lab=DIN1}
 N 430 -1040 430 -990 {lab=0}
 N 430 -1150 430 -1100 {lab=DIN1}
-N 1080 -850 1130 -850 {lab=DIN0}
-N 1080 -830 1130 -830 {lab=DIN0}
-N 1430 -850 1460 -850 {lab=VDD}
-N 1430 -830 1460 -830 {lab=VDD}
-N 1430 -810 1460 -810 {lab=VDD}
-N 1430 -790 1460 -790 {lab=VDD}
-N 1430 -770 1460 -770 {lab=VDD}
-N 1430 -750 1460 -750 {lab=VDD}
 C {sram_2w2b.sym} 320 -210 0 0 {name=x1}
 C {devices/lab_pin.sym} 120 -260 0 0 {name=p1 sig_type=std_logic lab=WL0}
 C {devices/lab_pin.sym} 120 -240 0 0 {name=p2 sig_type=std_logic lab=WL1}
@@ -121,6 +149,94 @@ C {devices/code_shown.sym} 1790 -390 0 0 {name=SPICE only_toplevel=false value="
 .meas tran t_read1 TRIG v(wl1) VAL=2.5 RISE=2 TARG v(dout1) VAL=2.5 RISE=1 TD=65n
 
 "}
+C {TR-1umLIB/MP.sym} 1080 -1000 0 1 {name=XM9
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {TR-1umLIB/MP.sym} 1160 -1000 0 0 {name=XM10
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {devices/lab_pin.sym} 1040 -890 0 0 {name=p42 sig_type=std_logic lab=BL0}
+C {devices/lab_pin.sym} 1200 -890 0 1 {name=p44 sig_type=std_logic lab=BLB0}
+C {devices/lab_pin.sym} 1120 -890 0 1 {name=p45 sig_type=std_logic lab=PCB}
+C {devices/lab_pin.sym} 1120 -1150 0 1 {name=p46 sig_type=std_logic lab=VDD}
+C {TR-1umLIB/MN.sym} 1120 -1250 3 0 {name=XM11
+model=NMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {devices/lab_pin.sym} 1120 -1360 0 1 {name=p47 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1230 -1290 0 1 {name=p48 sig_type=std_logic lab=BLB0}
+C {devices/lab_pin.sym} 1020 -1290 0 0 {name=p49 sig_type=std_logic lab=BL0}
+C {devices/lab_pin.sym} 1120 -1220 0 1 {name=p50 sig_type=std_logic lab=EQEN}
+C {TR-1umLIB/MP.sym} 1500 -1000 0 1 {name=XM12
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {TR-1umLIB/MP.sym} 1580 -1000 0 0 {name=XM13
+model=PMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {devices/lab_pin.sym} 1460 -890 0 0 {name=p51 sig_type=std_logic lab=BL1}
+C {devices/lab_pin.sym} 1620 -890 0 1 {name=p52 sig_type=std_logic lab=BLB1}
+C {devices/lab_pin.sym} 1540 -890 0 1 {name=p53 sig_type=std_logic lab=PCB}
+C {devices/lab_pin.sym} 1540 -1150 0 1 {name=p54 sig_type=std_logic lab=VDD}
+C {TR-1umLIB/MN.sym} 1540 -1250 3 0 {name=XM14
+model=NMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {devices/lab_pin.sym} 1540 -1360 0 1 {name=p55 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1650 -1290 0 1 {name=p56 sig_type=std_logic lab=BLB1}
+C {devices/lab_pin.sym} 1440 -1290 0 0 {name=p57 sig_type=std_logic lab=BL1}
+C {devices/lab_pin.sym} 1540 -1220 0 1 {name=p58 sig_type=std_logic lab=EQEN}
 C {TR-1umLIB/MP.sym} 1090 -1810 0 0 {name=XM15
 model=PMOS
 w=6.8u
@@ -212,12 +328,3 @@ C {devices/lab_pin.sym} 1080 -460 0 0 {name=p20 sig_type=std_logic lab=DIN1}
 C {devices/vsource.sym} 430 -1070 0 0 {name=VDIN1 value="PWL(0 0 19.9n 0 20n 5 100n 5)" savecurrent=false}
 C {devices/gnd.sym} 430 -990 0 0 {name=l6 lab=0}
 C {devices/lab_pin.sym} 430 -1150 0 0 {name=p21 sig_type=std_logic lab=DIN1}
-C {precharge.sym} 1280 -800 0 0 {name=x4}
-C {devices/lab_pin.sym} 1080 -850 0 0 {name=p22 sig_type=std_logic lab=PCB}
-C {devices/lab_pin.sym} 1080 -830 0 0 {name=p23 sig_type=std_logic lab=EQEN}
-C {devices/lab_pin.sym} 1460 -850 0 1 {name=p24 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 1460 -830 0 1 {name=p25 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 1460 -810 0 1 {name=p26 sig_type=std_logic lab=BL0}
-C {devices/lab_pin.sym} 1460 -790 0 1 {name=p27 sig_type=std_logic lab=BLB0}
-C {devices/lab_pin.sym} 1460 -770 0 1 {name=p28 sig_type=std_logic lab=BL1}
-C {devices/lab_pin.sym} 1460 -750 0 1 {name=p29 sig_type=std_logic lab=BLB1}
