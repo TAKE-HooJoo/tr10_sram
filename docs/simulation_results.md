@@ -111,3 +111,30 @@ Read:
 Read access time:
   Word0 = 1.2475 ns
   Word1 = 1.2461 ns
+
+2word × 2bit SRAM integrated verification
+
+Decoder:
+  WLE=0        → WL0=0, WL1=0
+  WLE=1,A0=0   → Word0 selected
+  WLE=1,A0=1   → Word1 selected
+
+Write Driver:
+  DIN0/DIN1 → differential BL/BLB generation PASS
+
+Write:
+  Word0 = 10 PASS
+  Word1 = 01 PASS
+
+Read:
+  Word0 → 10 PASS
+  Word1 → 01 PASS
+
+Read access:
+  Word0 = 1.247439 ns
+  Word1 = 1.246053 ns
+
+Result:
+  2word × 2bit SRAM + Decoder + Write Driver
+  + Precharge/Equalize + Read Buffer
+  integrated operation PASS
