@@ -1,0 +1,10 @@
+** sch_path: /home/take/Design/tr10_sram/cell/bitcell.sch
+.subckt bitcell BL BLB WL VDD VSS
+*.PININFO BL:B BLB:B WL:I VDD:B VSS:B
+MXM1 Q QB VDD VDD PMOS w=3.4u l=1u
+MXM2 QB Q VDD VDD PMOS w=3.4u l=1u
+MXM4 QB Q VSS VSS NMOS w=6.8u l=1u
+MXM3 Q QB VSS VSS NMOS w=6.8u l=1u
+MXM5 BL WL Q VSS NMOS w=5.1u l=1u
+MXM6 BLB WL QB VSS NMOS w=5.1u l=1u
+.ends

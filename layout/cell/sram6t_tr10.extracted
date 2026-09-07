@@ -1,0 +1,24 @@
+* Created by KLayout
+*** My special header ***
+
+* cell sram6t_tr10
+* pin BL
+* pin BLB
+* pin VDD
+* pin VSS
+* pin VSS
+* pin WL
+.SUBCKT sram6t_tr10 BL BLB VDD VSS VSS$1 WL
+* device instance $1 r0 *1 -402.6,10198 PMOS
+XM$1 \$2 \$1 VDD \$9 PMOS L=1u W=3.4u AS=9.52p AD=12.5p PS=12.4u PD=11.6u
+* device instance $2 r0 *1 -397,10198 PMOS
+XM$2 VDD \$2 \$1 \$9 PMOS L=1u W=3.4u AS=12.5p AD=9.52p PS=11.6u PD=12.4u
+* device instance $3 r0 *1 -406.1,10169 NMOS
+XM$3 BL WL \$2 VSS$1 NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $4 r0 *1 -393.6,10169 NMOS
+XM$4 BLB WL \$1 VSS$1 NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $5 r0 *1 -402.6,10175.9 NMOS
+XM$5 \$2 \$1 VSS VSS$1 NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $6 r0 *1 -397,10175.9 NMOS
+XM$6 \$1 \$2 VSS VSS$1 NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+.ENDS sram6t_tr10
