@@ -121,7 +121,7 @@ C {devices/lab_pin.sym} 540 -310 0 0 {name=p1 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 640 -470 0 1 {name=p2 sig_type=std_logic lab=DIN0B}
 C {TR-1umLIB/MN.sym} 140 -1000 0 0 {name=XM7
 model=NMOS
-w=5.1u
+w=5.2u
 l=1u
 m=1
 spiceprefix=X
@@ -133,7 +133,7 @@ nrd=0
 nrs=0}
 C {TR-1umLIB/MP.sym} 370 -1000 0 1 {name=XM8
 model=PMOS
-w=5.1u
+w=6.8u
 l=1u
 m=1
 spiceprefix=X
@@ -151,7 +151,7 @@ C {devices/lab_pin.sym} 250 -1120 1 0 {name=p33 sig_type=std_logic lab=BL0}
 C {devices/lab_pin.sym} 250 -880 3 0 {name=p34 sig_type=std_logic lab=DIN0}
 C {TR-1umLIB/MN.sym} 640 -1000 0 0 {name=XM1
 model=NMOS
-w=5.1u
+w=5.2u
 l=1u
 m=1
 spiceprefix=X
@@ -163,7 +163,7 @@ nrd=0
 nrs=0}
 C {TR-1umLIB/MP.sym} 870 -1000 0 1 {name=XM2
 model=PMOS
-w=5.1u
+w=6.8u
 l=1u
 m=1
 spiceprefix=X
@@ -209,7 +209,7 @@ C {devices/lab_pin.sym} 1420 -310 0 0 {name=p11 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 1520 -470 0 1 {name=p12 sig_type=std_logic lab=DIN1B}
 C {TR-1umLIB/MN.sym} 1110 -1000 0 0 {name=XM5
 model=NMOS
-w=5.1u
+w=5.2u
 l=1u
 m=1
 spiceprefix=X
@@ -221,7 +221,7 @@ nrd=0
 nrs=0}
 C {TR-1umLIB/MP.sym} 1340 -1000 0 1 {name=XM6
 model=PMOS
-w=5.1u
+w=6.8u
 l=1u
 m=1
 spiceprefix=X
@@ -239,7 +239,7 @@ C {devices/lab_pin.sym} 1220 -1120 1 0 {name=p17 sig_type=std_logic lab=BL1}
 C {devices/lab_pin.sym} 1220 -880 3 0 {name=p18 sig_type=std_logic lab=DIN1}
 C {TR-1umLIB/MN.sym} 1560 -1000 0 0 {name=XM9
 model=NMOS
-w=5.1u
+w=5.2u
 l=1u
 m=1
 spiceprefix=X
@@ -251,7 +251,7 @@ nrd=0
 nrs=0}
 C {TR-1umLIB/MP.sym} 1790 -1000 0 1 {name=XM10
 model=PMOS
-w=5.1u
+w=6.8u
 l=1u
 m=1
 spiceprefix=X
