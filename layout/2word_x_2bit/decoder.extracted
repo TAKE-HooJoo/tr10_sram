@@ -1,0 +1,15 @@
+* Created by KLayout
+*** My special header ***
+
+* cell decoder
+* pin VSS
+.SUBCKT decoder VSS
+* device instance $1 m0 *1 -2,25.6 PMOS
+XM$1 \$I6 \$1 \$6 \$3 PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 m135 *1 23.9,1.1 NMOS
+XM$2 \$I7 \$4 \$I8 VSS NMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 m45 *1 23.9,-6.5 NMOS
+XM$3 \$I9 \$5 \$I10 VSS NMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $4 m0 *1 -2,2.7 NMOS
+XM$4 \$I11 \$1 \$6 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS decoder
