@@ -1,6 +1,6 @@
 # TR-10 SRAM Development Project
 
-TR-10 / IP62 PDKを使用したSRAM開発プロジェクトです。
+TR-10 / IP62 PDKを使用したSRAM開発です。
 
 6T SRAMセルのトランジスタレベル設計から始め、Hold / Write / Read / SNM評価、2word × 2bit SRAMアレイ、周辺回路、Sense Amplifier、レイアウト、DRC / LVS / PEX、Post-layout simulationまで段階的に開発します。
 
