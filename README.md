@@ -1,80 +1,106 @@
-# TR-10 SRAM Development Project
+# TR-10 2-word × 2-bit SRAM
 
-TR-10 / IP62 PDKを使用したSRAM開発です。
+TR-10 / IP62 PDKを使用し、**6T SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM**です。
 
-6T SRAMセルのトランジスタレベル設計から始め、Hold / Write / Read / SNM評価、2word × 2bit SRAMアレイ、周辺回路、Sense Amplifier、レイアウト、DRC / LVS / PEX、Post-layout simulationまで段階的に開発します。
+SRAMをブラックボックスとして使用するのではなく、セル設計、シミュレーション、アレイ化、周辺回路、Sense Amplifier、レイアウト、DRC / LVSまでを段階的に構築しています。
 
 > **Think, Build, Discuss.**  
 > **Fail → Analyze → Improve.**
 
-## Project Goal
+---
 
-SRAMをブラックボックスとして使うのではなく、次の流れを実際に作りながら理解することを目的とします。
+## Submission Package
+
+TR-10への投稿に向け、以下を提出物として整理します。
+
+- **回路図**
+  - 6T SRAM Cell
+  - 2-word × 2-bit SRAM Array
+  - 入力インバータを含むSRAM Top
+  - Sense Amplifier
+- **シミュレーション用回路図**
+  - Hold
+  - Write
+  - Read
+  - Sense Amplifier
+- **レイアウト**
+  - 6T SRAM Cell
+  - 2-word × 2-bit SRAM Array
+  - `sram_2w2b_top.gds`
+  - DRC / LVS結果
+- **仕様書・説明書**
+  - SRAM仕様
+  - 回路構成
+  - シミュレーション結果
+  - レイアウト構成
+  - 設計上の工夫
+  - 本設計のアピールポイント
+
+---
+
+## 1. Overview
+
+本プロジェクトの目的は、小規模SRAMを実際にトランジスタから作ることで、以下の設計フローを理解・実証することです。
 
 ```text
-Transistor → Cell → Array → Peripheral → Layout → Verification
-```
-
-最終目標は、TR-10上で動作する小規模SRAMマクロを構築することです。
-
-```text
+Transistor
+   ↓
 6T SRAM Cell
-      ↓
-Cell Characterization
-      ↓
-2word × 2bit Array
-      ↓
-Precharge / Equalize
-      ↓
-Write Driver
-      ↓
+   ↓
+Simulation / Characterization
+   ↓
+2-word × 2-bit Array
+   ↓
+Peripheral Circuits
+   ↓
 Sense Amplifier
-      ↓
-SRAM Macro
-      ↓
+   ↓
 Layout
-      ↓
+   ↓
 DRC / LVS
-      ↓
-PEX
-      ↓
-Post-layout Simulation
 ```
 
-## Target
+現在、**入力インバータを含む 2-word × 2-bit SRAM Top LayoutでLVS clean**まで到達しています。
+
+---
+
+## 2. SRAM Specification
 
 | Item | Specification |
 |---|---|
 | Process / PDK | TR-10 / IP62 |
 | Schematic Editor | Xschem |
 | Simulator | ngspice |
+| Layout Editor | KLayout |
 | Supply Voltage | 5 V |
 | Minimum Gate Length | 1.0 µm |
 | SRAM Cell | 6T |
-| Initial Array | 2word × 2bit |
+| Memory Organization | 2-word × 2-bit |
+| Number of SRAM Cells | 4 |
 | Read Architecture | Differential BL / BLB |
-| Sense Circuit | Sense Amplifier |
+| Sense Circuit | 5T Sense Amplifier |
 | Layout Verification | DRC / LVS |
-| Post-layout | PEX + Simulation |
 
-## 6T SRAM Cell
+---
 
-基本となる6T SRAMセルは、クロスカップルされた2個のCMOSインバータと2個のAccess NMOSから構成します。
+## 3. 6T SRAM Cell
+
+基本となるSRAMセルは、クロスカップルされた2個のCMOSインバータと2個のAccess NMOSから構成する6T SRAMです。
 
 ```text
                  VDD
                   │
-            ┌─────┴─────┐
-            │           │
-           PMOS        PMOS
-            │ Q       QB│
-            ├────\ /────┤
-            │     X     │
-            ├────/ \────┤
-            │           │
-           NMOS        NMOS
-            │           │
-            └─────┬─────┘
+             ┌────┴────┐
+             │         │
+            PMOS      PMOS
+             │ Q     QB│
+             ├───\ /───┤
+             │    X    │
+             ├───/ \───┤
+             │         │
+            NMOS      NMOS
+             │         │
+             └────┬────┘
                   │
                  VSS
 
@@ -87,7 +113,7 @@ BLB ─── Access NMOS ─── QB
              WL
 ```
 
-### Initial transistor sizing
+### Transistor Sizing
 
 | Device | W | L |
 |---|---:|---:|
@@ -95,64 +121,116 @@ BLB ─── Access NMOS ─── QB
 | Access NMOS | 5.1 µm | 1.0 µm |
 | Pull-down NMOS | 6.8 µm | 1.0 µm |
 
-Initial cell ratio:
+Cell ratioは以下を初期条件としています。
 
 ```text
 Wpd : Wacc : Wpu = 6.8 : 5.1 : 3.4 = 2 : 1.5 : 1
 ```
 
-このサイズを初期条件として、Read stability / Write ability / SNMを評価しながら最適化します。
+---
 
-## Cell Characterization
+## 4. 2-word × 2-bit SRAM Array
 
-6Tセルでは以下のテストベンチを用意します。
-
-- `tb_sram6t.sch` — 総合動作確認
-- `tb_hold.sch` — WL非選択時の保持特性
-- `tb_write.sch` — Write 0 / Write 1
-- `tb_read.sch` — Read動作、Read disturb、BL/BLB差電圧
-- `tb_snm.sch` — Butterfly curveによるSNM評価
-
-Read評価では特にBL/BLBの差電圧を確認します。
-
-```text
-ΔVBL = |BL - BLB|
-```
-
-## 2word × 2bit SRAM
-
-最初のSRAMアレイは4セル構成です。
+4個の6T SRAMセルを使用して、2-word × 2-bitのSRAMアレイを構成します。
 
 ```text
              BL0 / BLB0       BL1 / BLB1
                   │                 │
 
-WL0 ────────── [CELL00]          [CELL01]
+WL0 ───────── [CELL00]          [CELL01]
 
-WL1 ────────── [CELL10]          [CELL11]
+WL1 ───────── [CELL10]          [CELL11]
 
                   │                 │
                 bit0              bit1
 ```
 
-アドレスによってWL0 / WL1を選択し、2bit単位でWrite / Readを行います。
+アドレスによってWL0 / WL1を選択し、2 bit単位でデータを扱います。
 
-## Read Path
+---
 
-初期のセル評価ではBL/BLBの基本Read動作を確認し、その後、Precharge / EqualizeとSense Amplifierを含む差動Read pathへ発展させます。
+## 5. Simulation Schematics
+
+6T SRAM Cellおよび周辺回路について、Xschem + ngspiceを使用して動作確認を行います。
+
+### 5.1 Hold
+
+`tb_hold.sch`
+
+WL非選択時に、SRAMセル内部のQ / QBが記憶状態を保持できることを確認します。
+
+### 5.2 Write
+
+`tb_write.sch`
+
+BL / BLBへ相補データを与え、WLをAssertすることでWrite 0 / Write 1動作を確認します。
+
+### 5.3 Read
+
+`tb_read.sch`
+
+Read時のBL / BLBの電位変化を確認します。
+
+```text
+ΔVBL = |BL - BLB|
+```
+
+SRAMセルが生成するBL / BLBの差電圧をSense Amplifierへ接続することを想定しています。
+
+---
+
+## 6. 5T Sense Amplifier
+
+Read回路には**5T Sense Amplifier**を使用します。
+
+SRAMセルのRead時にBL / BLBへ発生する差電圧 `ΔVBL` を増幅し、デジタルレベルとして判定することを目的とします。
+
+### 6.1 Transient Simulation
+
+![5T Sense Amplifier Transient Simulation](docs/images/sa1.png)
+
+BL / BLBに差を与えた過渡解析では、Sense動作によってBL / BLBが大きく分離することを確認しました。
+
+この評価により、差動Bit Lineを利用したRead回路の基本動作を確認しています。
+
+### 6.2 Differential Input vs Sense Delay
+
+Sense Amplifierへ与える初期BL差電圧 `ΔVBL` を変化させ、Sense Delayとの関係を評価しました。
+
+![5T Sense Amplifier Differential Input vs Sense Delay](docs/images/5t_sense_amp_dvbl_vs_delay.png)
+
+| Initial BL Differential ΔVBL | Sense Delay |
+|---:|---:|
+| 10 mV | 6.202 ns |
+| 20 mV | 5.604 ns |
+| 50 mV | 4.812 ns |
+| 100 mV | 4.212 ns |
+| 200 mV | 3.614 ns |
+
+入力差電圧が大きくなるほどSense Delayが短くなることを確認しました。
+
+特に、**ΔVBL = 10 mVの微小差動入力まで評価し、Sense動作を確認**しています。
+
+この結果から、SRAM Cellが生成するBit Line差電圧とSense Amplifierの起動タイミングの関係がRead動作に重要であることが分かります。
+
+---
+
+## 7. Read Path
+
+最終的なRead Pathは以下を想定しています。
 
 ```text
        Precharge / Equalize
                 │
-           BL / BLB
+             BL / BLB
                 │
-          6T SRAM Array
+        2-word × 2-bit SRAM
                 │
           ΔVBL generation
                 │
-          Sense Enable
+           Sense Enable
                 │
-         Sense Amplifier
+       5T Sense Amplifier
                 │
               DOUT
 ```
@@ -161,17 +239,106 @@ WL1 ────────── [CELL10]          [CELL11]
 
 1. BL / BLBをPrecharge / Equalize
 2. Word LineをAssert
-3. セルデータによってBL / BLBに微小差電圧ΔVBLを生成
-4. Sense EnableをAssert
-5. Sense Amplifierで差電圧を0 / 1へ増幅
-6. DOUTを確定
+3. SRAM CellによってBL / BLBに差電圧ΔVBLを生成
+4. Sense Amplifierを起動
+5. 差電圧を増幅
+6. Read dataを確定
 
-## Project Structure
+---
+
+## 8. Layout
+
+### 8.1 SRAM Cell Layout
+
+6T SRAM CellをKLayoutでレイアウトし、2-word × 2-bit Arrayの基本セルとして使用します。
+
+### 8.2 2-word × 2-bit Array Layout
+
+4個のSRAM Cellを配置し、WLおよびBL / BLBを共有するアレイ構造を構成します。
+
+### 8.3 SRAM Top Layout
+
+入力インバータを含むSRAM Top Layoutを作成しています。
+
+```text
+layout/2word_x_2bit/sram_2w2b_top.gds
+```
+
+### 8.4 Layout Verification
+
+現在のTop Layoutは、回路図との比較を行い、**LVS clean**を確認しています。
+
+```text
+2-word × 2-bit SRAM
+        ↓
+Input Inverter
+        ↓
+Top Layout
+        ↓
+DRC / LVS
+        ↓
+LVS CLEAN
+```
+
+---
+
+## 9. Design Highlights
+
+本設計では、単にSRAMマクロを利用するのではなく、**SRAM CellからRead回路、物理レイアウトまでを自作して評価すること**を重視しています。
+
+### Transistor-level SRAM Design
+
+6T SRAM Cellをトランジスタレベルから構築し、Hold / Write / Readを段階的に確認します。
+
+### Small but Complete SRAM Array
+
+2-word × 2-bitという小規模な構成にすることで、SRAM Cell、Word Line、Bit Line、周辺回路の関係を追跡しやすい設計としています。
+
+### Differential Read Evaluation
+
+Read時のBL / BLB差電圧に着目し、Sense AmplifierへつながるRead Pathとして評価しています。
+
+### Quantitative Sense Amplifier Evaluation
+
+5T Sense Amplifierについては単純な動作確認だけでなく、`ΔVBL = 10 mV ～ 200 mV`まで入力差を変化させ、Sense Delayとの関係を定量評価しました。
+
+**10 mVの微小差動入力についてもSense動作を確認**しています。
+
+### Layout to LVS
+
+回路シミュレーションだけで終わらせず、2-word × 2-bit SRAMを実際にレイアウトし、入力インバータを含むTop Layoutまで統合して**LVS clean**を確認しています。
+
+### Open Source EDA Flow
+
+Xschem、ngspice、KLayoutを使用し、回路設計からシミュレーション、レイアウト、検証までを行っています。
+
+---
+
+## 10. Current Status
+
+```text
+6T SRAM Cell
+     ↓
+2-word × 2-bit Array
+     ↓
+5T Sense Amplifier Simulation
+     ↓
+Input Inverter
+     ↓
+SRAM Top Layout
+     ↓
+DRC / LVS
+     ↓
+LVS CLEAN  ← Current physical-design milestone
+```
+
+---
+
+## 11. Repository Structure
 
 ```text
 tr10_sram/
 ├── generic/
-│   └── 現在の動作確認版
 │
 ├── cell/
 │   ├── MN.sym
@@ -186,118 +353,69 @@ tr10_sram/
 │
 ├── array/
 │   └── 2word_x_2bit/
-│       ├── sram_2w2b.sch
-│       ├── sram_2w2b.sym
-│       ├── decoder.sch
-│       ├── precharge.sch
-│       ├── write_driver.sch
-│       ├── sense_amp.sch
-│       ├── tb_sram_2w2b.sch
-│       └── tb_sense_amp.sch
 │
 ├── layout/
 │   ├── cell/
 │   └── 2word_x_2bit/
+│       └── sram_2w2b_top.gds
 │
 ├── spice/
 │   ├── cell/
 │   └── array/
 │
 └── docs/
-    ├── sizing.md
+    ├── images/
+    │   ├── sa1.png
+    │   └── 5t_sense_amp_dvbl_vs_delay.png
+    ├── specification.md
     ├── simulation_results.md
-    └── layout_notes.md
+    ├── layout_description.md
+    └── design_highlights.md
 ```
 
-## Development Roadmap
+---
 
-### Phase 1 — Environment
+## 12. Submission Checklist
 
-- [x] Generic SRAM functional verification
-- [x] TR-10 / IP62 MOS symbol preparation
-- [x] Project repository setup
-- [ ] TR-10 SRAM simulation environment verification
+### Circuit Schematics
 
-### Phase 2 — 6T SRAM Cell
+- [ ] 6T SRAM Cell schematic
+- [ ] 2-word × 2-bit SRAM schematic
+- [ ] SRAM Top schematic
+- [ ] 5T Sense Amplifier schematic
 
-- [ ] 6T transistor-level schematic
-- [ ] Generate SRAM cell symbol
+### Simulation Schematics / Results
+
 - [ ] Hold simulation
-- [ ] Write 0 / Write 1 simulation
+- [ ] Write simulation
 - [ ] Read simulation
-- [ ] Read disturb evaluation
-- [ ] SNM evaluation
-- [ ] Cell sizing optimization
+- [x] 5T Sense Amplifier transient simulation
+- [x] ΔVBL vs Sense Delay evaluation
 
-### Phase 3 — Peripheral Circuits
+### Layout
 
-- [ ] Precharge circuit
-- [ ] Equalize circuit
-- [ ] Write Driver
-- [ ] Word-line Decoder
-- [ ] Sense Amplifier
-- [ ] Sense Enable timing evaluation
+- [x] 6T SRAM Cell layout
+- [x] 2-word × 2-bit SRAM layout
+- [x] SRAM Top GDS
+- [x] LVS clean Top Layout
+- [ ] Final submission DRC report
 
-### Phase 4 — 2word × 2bit Array
+### Documentation
 
-- [ ] 4-cell array
-- [ ] Address selection
-- [ ] Write operation
-- [ ] Read operation
-- [ ] Differential Read
-- [ ] Sense Amplifier integration
+- [x] Basic SRAM specification
+- [x] Sense Amplifier evaluation
+- [x] Design highlights
+- [ ] Final circuit figures
+- [ ] Final layout figures
+- [ ] Final submission document
 
-### Phase 5 — Layout
+---
 
-- [ ] 6T SRAM cell layout
-- [ ] Cell DRC
-- [ ] Cell LVS
-- [ ] 2word × 2bit array layout
-- [ ] Peripheral circuit layout
-- [ ] SRAM macro integration
+## Repository
 
-### Phase 6 — Post-layout
+`TAKE-HooJoo/tr10_sram`
 
-- [ ] Parasitic extraction
-- [ ] PEX simulation
-- [ ] Read timing verification
-- [ ] Write timing verification
-- [ ] Sense Amplifier verification
-- [ ] Final SRAM macro verification
-
-## Development Flow
-
-```text
-generic
-   ↓
-6T Cell Schematic
-   ↓
-Hold
-   ↓
-Write
-   ↓
-Read
-   ↓
-SNM
-   ↓
-Cell Sizing
-   ↓
-Peripheral Circuits
-   ↓
-2word × 2bit Array
-   ↓
-Sense Amplifier
-   ↓
-Layout
-   ↓
-DRC
-   ↓
-LVS
-   ↓
-PEX
-   ↓
-Post-layout Simulation
-```
+---
 
 ## Design Philosophy
 
@@ -307,14 +425,6 @@ Post-layout Simulation
 
 > **Think, Build, Discuss.**  
 > **Fail → Analyze → Improve.**
-
-## Repository
-
-GitHub repository: `TAKE-HooJoo/tr10_sram`
-
-## Notes
-
-本プロジェクトは開発・学習中です。回路仕様、トランジスタサイズ、テストベンチ、周辺回路構成はシミュレーションおよびレイアウト評価の結果に応じて更新します。
 
 ---
 
