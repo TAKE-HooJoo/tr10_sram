@@ -193,6 +193,40 @@ Amplifierへ接続することを想定しています。
 
 ------------------------------------------------------------------------
 
+## SRAM Cell Stability — SNM Evaluation
+
+6T SRAMセルの安定性を確認するため、Static Noise Margin（SNM）を評価しました。
+
+### Hold SNM
+
+Hold状態では、
+
+``` text
+Hold SNM = 1.354 V
+         = 1354 mV
+```
+
+となりました。
+
+![Hold SNM](cell/snm/snm_butterfly_square.png)
+
+### Read SNM
+
+Read時はBL / BLBを5 Vへプリチャージし、WL = 5 Vとして
+Access NMOSをONにした状態で評価しました。
+
+Read DisturbによってLow側内部ノードが約0.77 Vまで持ち上がり、
+Butterfly Curveの開口が小さくなることを確認しました。
+
+``` text
+Read SNM = 0.400 V
+         = 400 mV
+```
+
+![Read SNM](cell/snm/read_snm_butterfly_square.png)
+
+------------------------------------------------------------------------
+
 ## 6. 5T Sense Amplifier Evaluation
 
 Read回路の候補として**5T Sense Amplifier**を設計・評価しました。
