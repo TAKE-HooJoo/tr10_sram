@@ -6,8 +6,7 @@ SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM*
 SRAMをブラックボックスとして使用するのではなく、セル設計、シミュレーション、アレイ化、Decoder、Write
 Driver、Precharge / Equalize、Read
 Buffer、レイアウト、LVSまでを段階的に構築しました。Sense
-Amplifierも設計・評価しましたが、SRAM統合時のBit
-Line負荷を考慮し、最終TopではRead Bufferを採用しています。
+Amplifierも設計・評価しましたが、SRAMの容量が小さく効果がわかりにくかったので、最終TopではRead Buffer（インバータ受け）としました。
 
 > **Think, Build, Discuss.**\
 > **Fail → Analyze → Improve.**
@@ -49,7 +48,7 @@ OpenSUSI TR-10 MPWへの投稿に向け、以下を提出物として整理し�
 
 ## 1. Overview
 
-本プロジェクトの目的は、小規模SRAMを実際にトランジスタから作ることで、以下の設計フローを理解・実証することです。
+今回は、小規模SRAMを作ることで、まずはSRAMってどうやって設計するんだろう？？を理解・実証することとしました。
 
 ``` text
 Transistor
@@ -71,7 +70,7 @@ LVS
 
 現在、**6T SRAM Core、Decoder、Write Driver、Precharge / Equalize、Read
 Bufferを統合した 2-word × 2-bit SRAM Top LayoutでLVS
-clean**まで到達しています。
+clean**となっています。
 
 ------------------------------------------------------------------------
 
@@ -167,9 +166,10 @@ Wpd : Wacc : Wpu = 6.8 : 5.1 : 3.4 = 2 : 1.5 : 1
              BL0 / BLB0       BL1 / BLB1
                   │                 │
 
+WL1 ───────── [CELL10]          [CELL11]
+
 WL0 ───────── [CELL00]          [CELL01]
 
-WL1 ───────── [CELL10]          [CELL11]
 
                   │                 │
                 bit0              bit1
@@ -335,7 +335,7 @@ layout/2word_x_2bit/sram_2w2b_top.gds
 
 ![TR-10 2-word x 2-bit SRAM Top Layout](docs/images/finalgds.png)
 
-Top Layoutは約 **220 µm × 300 µm** のprBoundary内に、6T SRAM
+Top Layoutは約 **300um ×  220um** 内に、6T SRAM
 Core、Decoder、Write Driver、Precharge / Equalize、Read
 Bufferを統合しています。現状のTop-level I/Oは **12 pins** です。
 
@@ -365,15 +365,6 @@ LVS CLEAN
 
 ## 9. Design Highlights
 
-本設計では、単にSRAMマクロを利用するのではなく、**6T SRAM
-CellからDecoder、Write Driver、Precharge / Equalize、Read
-Buffer、物理レイアウトまでを自作して評価すること**を重視しています。
-
-### Transistor-level SRAM Design
-
-6T SRAM Cellをトランジスタレベルから構築し、Hold / Write /
-Readを段階的に確認します。
-
 ### Small but Complete SRAM Array
 
 2-word × 2-bitという小規模な構成にすることで、SRAM Cell、Word Line、Bit
@@ -383,7 +374,7 @@ Line、周辺回路の関係を追跡しやすい設計としています。
 
 Read時のBL / BLB差電圧を評価するとともに、Sense AmplifierとRead
 Bufferの両方を検討しました。最終Topでは、SRAM統合時のBit
-Line負荷を考慮してCMOS Read Bufferを採用しています。
+Line負荷が軽いことを考慮してCMOS Read Buffer（インバータ受け）を採用しています。
 
 ### Quantitative Sense Amplifier Evaluation
 
@@ -434,11 +425,16 @@ Final submission DRC  ← Next
 現在のTop-level I/Oは以下の12ピンです。
 
 ``` text
+電源
 VDD, VSS
+
+入力PIN
 A0, WLE
 WE, WEB
 PCB, EQEN
 DIN0, DIN1
+
+出力PIN
 DOUT0, DOUT1
 ```
 
@@ -462,6 +458,9 @@ DOUT0, DOUT1
 
 ``` text
 tr10_sram/
+│
+├── 提出物（回路図、レイアウト、その他）
+│
 ├── generic/
 │
 ├── cell/
@@ -505,61 +504,17 @@ tr10_sram/
 
 ------------------------------------------------------------------------
 
-## 13. Submission Checklist
-
-### Circuit Schematics
-
--   [ ] 6T SRAM Cell schematic
--   [ ] 2-word × 2-bit SRAM schematic
--   [ ] SRAM Top schematic
--   [ ] Decoder / Write Driver / Precharge / Read Buffer schematics
--   [ ] 5T Sense Amplifier schematic（評価回路）
-
-### Simulation Schematics / Results
-
--   [ ] Hold simulation
--   [ ] Write simulation
--   [ ] Read simulation
--   [x] 5T Sense Amplifier transient simulation
--   [x] ΔVBL vs Sense Delay evaluation
--   [x] Integrated Read Buffer simulation
--   [x] Word0 / Word1 integrated Read simulation
-
-### Layout
-
--   [x] 6T SRAM Cell layout
--   [x] 2-word × 2-bit SRAM layout
--   [x] SRAM Top GDS
--   [x] LVS clean Top Layout
--   [ ] Final submission DRC report
-
-### Documentation
-
--   [x] Basic SRAM specification
--   [x] Sense Amplifier evaluation
--   [x] Design highlights
--   [ ] Final circuit figures
--   [ ] Final layout figures
--   [ ] Final submission document
-
-------------------------------------------------------------------------
-
-## 14. Repository
+## 13. Repository
 
 `TAKE-HooJoo/tr10_sram`
 
 ------------------------------------------------------------------------
 
-## 15. Design Philosophy
+## 14. Design Philosophy
 
 最初から完成したSRAMマクロを目指すのではなく、次のサイクルを重視します。
+（いいわけ）
 
 **小さく作る → 動かす → 測る → 失敗する → 原因を調べる → 改善する**
 
-> **Think, Build, Discuss.**\
-> **Fail → Analyze → Improve.**
 
-------------------------------------------------------------------------
-
-**小さなセルから、大きな未来へ。**\
-Open Source PDK / EDAで、SRAMを回路からレイアウトまで作る。
