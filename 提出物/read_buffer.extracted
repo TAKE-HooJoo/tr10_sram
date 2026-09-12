@@ -1,0 +1,20 @@
+* Created by KLayout
+*** My special header ***
+
+* cell read_buffer
+* pin BLB0
+* pin BLB1
+* pin DOUT0
+* pin DOUT1
+* pin VDD
+* pin VSS
+.SUBCKT read_buffer BLB0 BLB1 DOUT0 DOUT1 VDD VSS
+* device instance $1 m135 *1 -0.8,24.9 PMOS
+XM$1 VDD BLB0 DOUT0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r270 *1 36.6,24.9 PMOS
+XM$2 VDD BLB1 DOUT1 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 m135 *1 -2.5,1.3 NMOS
+XM$3 DOUT0 BLB0 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 r270 *1 38.3,1.3 NMOS
+XM$4 DOUT1 BLB1 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS read_buffer

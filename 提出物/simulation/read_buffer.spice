@@ -1,0 +1,8 @@
+** sch_path: /home/take/Design/tr10_sram/array/2word_x_2bit/read_buffer.sch
+.subckt read_buffer VDD VSS BLB0 BLB1 DOUT0 DOUT1
+*.PININFO VDD:B VSS:B BLB0:I BLB1:I DOUT0:O DOUT1:O
+MXM15 DOUT0 BLB0 VDD VDD PMOS w=6.8u l=1u
+MXM16 DOUT0 BLB0 VSS VSS NMOS w=3.4u l=1u
+MXM1 DOUT1 BLB1 VDD VDD PMOS w=6.8u l=1u
+MXM2 DOUT1 BLB1 VSS VSS NMOS w=3.4u l=1u
+.ends

@@ -15,34 +15,14 @@ Amplifierも設計・評価しましたが、SRAMの容量が小さく効果が�
 
 ## Submission Package
 
-OpenSUSI TR-10 MPWへの投稿に向け、以下を提出物として整理します。
+OpenSUSI TR-10 MPWへの投稿に向けた提出物。
 
--   **回路図**
-    -   6T SRAM Cell
-    -   2-word × 2-bit SRAM Array
-    -   Decoder
-    -   Write Driver
-    -   Precharge / Equalize
-    -   Read Buffer
-    -   SRAM Top
-    -   5T Sense Amplifier（評価回路）
--   **シミュレーション用回路図**
-    -   Hold
-    -   Write
-    -   Read
-    -   5T Sense Amplifier（評価）
--   **レイアウト**
-    -   6T SRAM Cell
-    -   2-word × 2-bit SRAM Array
-    -   `sram_2w2b_top.gds`
-    -   DRC / LVS結果
--   **仕様書・説明書**
-    -   SRAM仕様
-    -   回路構成
-    -   シミュレーション結果
-    -   レイアウト構成
-    -   設計上の工夫
-    -   本設計のアピールポイント
+-   **提出物フォルダ**
+    -   回路図　sram_2w2b_top.sch
+    -   レイアウト　sram_2w2b_top.gds
+    -   README.md　今回の工夫・アピールポイント
+
+
 
 ------------------------------------------------------------------------
 
@@ -459,7 +439,7 @@ DOUT0, DOUT1
 ``` text
 tr10_sram/
 │
-├── 提出物（回路図、レイアウト、その他）
+├── 提出物（回路図、レイアウト、テストベンチ）
 │
 ├── generic/
 │

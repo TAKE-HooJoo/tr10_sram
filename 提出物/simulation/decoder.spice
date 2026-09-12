@@ -1,0 +1,18 @@
+** sch_path: /home/take/Design/tr10_sram/array/2word_x_2bit/decoder.sch
+.subckt decoder VDD VSS WL0 WLE A0 WL1
+*.PININFO VDD:B VSS:B WLE:I WL0:O WL1:O A0:I
+MXM7 A0B A0 VDD VDD PMOS w=6.8u l=1u
+MXM8 A0B A0 VSS VSS NMOS w=3.4u l=1u
+MXM9 net2 WLE VDD VDD PMOS w=6.8u l=1u
+MXM10 net1 WLE VSS VSS NMOS w=6.8u l=1u
+MXM11 net2 A0B net1 VSS NMOS w=6.8u l=1u
+MXM12 net2 A0B VDD VDD PMOS w=6.8u l=1u
+MXM13 WL0 net2 VDD VDD PMOS w=6.8u l=1u
+MXM14 WL0 net2 VSS VSS NMOS w=3.4u l=1u
+MXM15 net4 WLE VDD VDD PMOS w=6.8u l=1u
+MXM16 net3 WLE VSS VSS NMOS w=6.8u l=1u
+MXM17 net4 A0 net3 VSS NMOS w=6.8u l=1u
+MXM18 net4 A0 VDD VDD PMOS w=6.8u l=1u
+MXM19 WL1 net4 VDD VDD PMOS w=6.8u l=1u
+MXM20 WL1 net4 VSS VSS NMOS w=3.4u l=1u
+.ends
