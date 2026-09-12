@@ -17,7 +17,7 @@ Amplifierも設計・評価しましたが、SRAMの容量が小さく効果が�
 
 OpenSUSI TR-10 MPWへの投稿に向けた提出物。
 
--   **提出物フォルダ**
+-   **Deliverables（提出物）**
     -   回路図　sram_2w2b_top.sch
     -   レイアウト　sram_2w2b_top.gds
     -   README.md　今回の工夫・アピールポイント
@@ -439,7 +439,7 @@ DOUT0, DOUT1
 ``` text
 tr10_sram/
 │
-├── 提出物（回路図、レイアウト、テストベンチ）
+├── Deliverables（提出物）
 │
 ├── generic/
 │
