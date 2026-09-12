@@ -1,4 +1,0 @@
-* Generic 5 V MOS models for functional verification only.
-* Replace with TR-10 PDK models before MPW sign-off.
-.model NMOS NMOS level=1 VTO=0.75 KP=120u GAMMA=0.45 PHI=0.7 LAMBDA=0.02
-.model PMOS PMOS level=1 VTO=-0.75 KP=50u GAMMA=0.45 PHI=0.7 LAMBDA=0.02
