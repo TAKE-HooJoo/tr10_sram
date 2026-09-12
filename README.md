@@ -1,4 +1,4 @@
-# TR-10 2-word × 2-bit SRAM
+# はじめてのSRAM設計
 
 OpenSUSI TR10 PDKを使用し、**6T
 SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM**です。
