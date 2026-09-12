@@ -1,6 +1,6 @@
 # TR-10 2-word × 2-bit SRAM
 
-OpenSUSI TR-10 PDKを使用し、**6T
+OpenSUSI TR10 PDKを使用し、**6T
 SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM**です。
 
 SRAMをブラックボックスとして使用するのではなく、セル設計、シミュレーション、アレイ化、Decoder、Write
@@ -15,7 +15,7 @@ Amplifierも設計・評価しましたが、SRAMの容量が小さく効果が�
 
 ## Submission Package
 
-OpenSUSI TR-10 MPWへの投稿に向けた提出物。
+OpenSUSI TR10 MPWへの投稿に向けた提出物。
 
 -   **Deliverables（提出物）**
     -   回路図　sram_2w2b_top.sch
@@ -59,7 +59,7 @@ clean**となっています。
   ------------------------------------------------------------------------
   Item                             Specification
   -------------------------------- ---------------------------------------
-  Process / PDK                    TR-10 / IP62
+  Process / PDK                    OpenSUSI-TR10 PDK
 
   Schematic Editor                 Xschem
 
