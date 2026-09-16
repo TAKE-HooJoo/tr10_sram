@@ -48,13 +48,26 @@ N 360 -630 380 -630 {lab=VSS}
 N 540 -650 560 -650 {lab=WLE}
 N 540 -630 560 -630 {lab=A0}
 N 700 -650 720 -650 {lab=WE}
-N 700 -630 720 -630 {lab=WEB}
 N 860 -650 880 -650 {lab=DIN0}
 N 860 -630 880 -630 {lab=DIN1}
 N 1030 -650 1050 -650 {lab=PCB}
 N 1030 -630 1050 -630 {lab=EQEN}
 N 1200 -650 1220 -650 {lab=DOUT0}
 N 1200 -630 1220 -630 {lab=DOUT1}
+N 300 -200 300 -170 {lab=WEB}
+N 300 -110 300 -60 {lab=VSS}
+N 300 -140 320 -140 {lab=VSS}
+N 320 -140 320 -100 {lab=VSS}
+N 300 -100 320 -100 {lab=VSS}
+N 300 -300 300 -260 {lab=VDD}
+N 240 -230 260 -230 {lab=WE}
+N 240 -230 240 -140 {lab=WE}
+N 240 -140 260 -140 {lab=WE}
+N 300 -190 360 -190 {lab=WEB}
+N 200 -190 240 -190 {lab=WE}
+N 300 -230 320 -230 {lab=VDD}
+N 320 -270 320 -230 {lab=VDD}
+N 300 -270 320 -270 {lab=VDD}
 C {sram_2w2b.sym} 800 -400 0 0 {name=x1}
 C {decoder.sym} 320 -400 0 0 {name=x2}
 C {write_driver.sym} 740 -190 0 0 {name=x3}
@@ -110,8 +123,6 @@ C {devices/ipin.sym} 540 -630 0 0 {name=p46 lab=A0}
 C {devices/lab_pin.sym} 560 -630 0 1 {name=p47 sig_type=std_logic lab=A0}
 C {devices/ipin.sym} 700 -650 0 0 {name=p48 lab=WE}
 C {devices/lab_pin.sym} 720 -650 0 1 {name=p49 sig_type=std_logic lab=WE}
-C {devices/ipin.sym} 700 -630 0 0 {name=p50 lab=WEB}
-C {devices/lab_pin.sym} 720 -630 0 1 {name=p51 sig_type=std_logic lab=WEB}
 C {devices/ipin.sym} 860 -650 0 0 {name=p52 lab=DIN0}
 C {devices/lab_pin.sym} 880 -650 0 1 {name=p53 sig_type=std_logic lab=DIN0}
 C {devices/ipin.sym} 860 -630 0 0 {name=p54 lab=DIN1}
@@ -123,3 +134,31 @@ C {devices/lab_pin.sym} 1050 -630 0 1 {name=p59 sig_type=std_logic lab=EQEN}
 C {devices/lab_pin.sym} 1200 -650 0 0 {name=p60 sig_type=std_logic lab=DOUT0}
 C {devices/opin.sym} 1220 -630 0 0 {name=p61 lab=DOUT1}
 C {devices/lab_pin.sym} 1200 -630 0 0 {name=p62 sig_type=std_logic lab=DOUT1}
+C {devices/lab_pin.sym} 300 -300 0 0 {name=p63 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 200 -190 0 0 {name=p64 sig_type=std_logic lab=WE}
+C {devices/lab_pin.sym} 360 -190 0 1 {name=p65 sig_type=std_logic lab=WEB}
+C {devices/lab_pin.sym} 300 -60 0 0 {name=p66 sig_type=std_logic lab=VSS}
+C {TR-1umLIB/MN.sym} 260 -140 0 0 {name=XM1
+model=NMOS
+w=3.4u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
+C {TR-1umLIB/MP.sym} 260 -230 0 0 {name=XM2
+model=PMOS
+w=6.8u
+l=1u
+m=1
+spiceprefix=X
+as=0
+ad=0
+ps=0
+pd=0
+nrd=0
+nrs=0}
