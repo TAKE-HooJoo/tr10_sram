@@ -5,7 +5,7 @@ x1 WL0 BL0 VDD BL1 BLB1 WL1 BLB0 VSS sram_2w2b
 x2 VDD VSS WL0 WLE A0 WL1 decoder
 x3 DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB write_driver
 x4 VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1 precharge
-x5 VDD VSS BLB0 BLB1 DOUT0 DOUT1 read_buffer
+x5 VDD VSS BLB0 BLB1 DOUT0 DOT1 read_buffer
 .ends
 
 * expanding   symbol:  sram_2w2b.sym # of pins=8

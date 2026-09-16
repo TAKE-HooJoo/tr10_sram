@@ -42,7 +42,7 @@ N 1420 -350 1440 -350 {lab=BLB1}
 N 1380 -210 1400 -210 {lab=VDD}
 N 1380 -190 1400 -190 {lab=VSS}
 N 1380 -170 1400 -170 {lab=DOUT0}
-N 1380 -150 1400 -150 {lab=DOT1}
+N 1380 -150 1400 -150 {lab=DOUT1}
 N 360 -650 380 -650 {lab=VDD}
 N 360 -630 380 -630 {lab=VSS}
 N 540 -650 560 -650 {lab=WLE}
@@ -53,8 +53,8 @@ N 860 -650 880 -650 {lab=DIN0}
 N 860 -630 880 -630 {lab=DIN1}
 N 1030 -650 1050 -650 {lab=PCB}
 N 1030 -630 1050 -630 {lab=EQEN}
-N 1200 -650 1220 -650 {lab=xxx}
-N 1200 -630 1220 -630 {lab=xxx}
+N 1200 -650 1220 -650 {lab=DOUT0}
+N 1200 -630 1220 -630 {lab=DOUT1}
 C {sram_2w2b.sym} 800 -400 0 0 {name=x1}
 C {decoder.sym} 320 -400 0 0 {name=x2}
 C {write_driver.sym} 740 -190 0 0 {name=x3}
@@ -101,7 +101,7 @@ C {devices/lab_pin.sym} 1440 -350 0 1 {name=p37 sig_type=std_logic lab=BLB1}
 C {devices/lab_pin.sym} 1400 -210 0 1 {name=p38 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 1400 -190 0 1 {name=p39 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 1400 -170 0 1 {name=p40 sig_type=std_logic lab=DOUT0}
-C {devices/lab_pin.sym} 1400 -150 0 1 {name=p41 sig_type=std_logic lab=DOT1}
+C {devices/lab_pin.sym} 1400 -150 0 1 {name=p41 sig_type=std_logic lab=DOUT1}
 C {devices/lab_pin.sym} 380 -650 0 1 {name=p42 sig_type=std_logic lab=VDD}
 C {devices/iopin.sym} 360 -630 0 1 {name=p43 lab=VSS}
 C {devices/lab_pin.sym} 380 -630 0 1 {name=p44 sig_type=std_logic lab=VSS}
@@ -109,7 +109,7 @@ C {devices/lab_pin.sym} 560 -650 0 1 {name=p45 sig_type=std_logic lab=WLE}
 C {devices/ipin.sym} 540 -630 0 0 {name=p46 lab=A0}
 C {devices/lab_pin.sym} 560 -630 0 1 {name=p47 sig_type=std_logic lab=A0}
 C {devices/ipin.sym} 700 -650 0 0 {name=p48 lab=WE}
-C {devices/lab_pin.sym} 720 -650 0 1 {name=p49 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 720 -650 0 1 {name=p49 sig_type=std_logic lab=WE}
 C {devices/ipin.sym} 700 -630 0 0 {name=p50 lab=WEB}
 C {devices/lab_pin.sym} 720 -630 0 1 {name=p51 sig_type=std_logic lab=WEB}
 C {devices/ipin.sym} 860 -650 0 0 {name=p52 lab=DIN0}

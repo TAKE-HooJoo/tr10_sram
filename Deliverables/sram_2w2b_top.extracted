@@ -17,12 +17,12 @@
 .SUBCKT sram_2w2b_top A0 DIN0 DIN1 DOUT0 DOUT1 EQEN PCB VDD VSS WE WEB WLE
 * cell instance $1 r0 *1 -16.7,94.6
 X$1 VDD DIN0 DIN1 WEB \$3 \$2 \$4 \$1 WE VSS write_driver
-* cell instance $3 r0 *1 62.2,187.9
-X$3 VDD \$4 \$3 \$2 \$1 PCB EQEN VSS precharge
-* cell instance $5 r0 *1 383.1,-9998.1
-X$5 \$3 \$4 \$1 \$2 VDD \$5 \$6 VSS sram_2w2b
-* cell instance $7 r0 *1 55,81.7
-X$7 VDD \$4 DOUT0 \$1 DOUT1 VSS read_buffer
+* cell instance $3 r0 *1 55,81.7
+X$3 VDD \$4 DOUT0 \$1 DOUT1 VSS read_buffer
+* cell instance $5 r0 *1 62.2,187.9
+X$5 VDD \$4 \$3 \$2 \$1 PCB EQEN VSS precharge
+* cell instance $7 r0 *1 383.1,-9998.1
+X$7 \$3 \$4 \$1 \$2 VDD \$5 \$6 VSS sram_2w2b
 * cell instance $21 r0 *1 -118.1,171.7
 X$21 A0 \$5 \$6 VDD WLE VSS decoder
 .ENDS sram_2w2b_top
