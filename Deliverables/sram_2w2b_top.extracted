@@ -7,27 +7,30 @@
 * pin DIN1
 * pin DOUT0
 * pin DOUT1
-* pin EQEN
 * pin PCB
 * pin VDD
 * pin VSS
 * pin WE
 * pin WLE
-.SUBCKT sram_2w2b_top A0 DIN0 DIN1 DOUT0 DOUT1 EQEN PCB VDD VSS WE WLE
-* cell instance $3 r0 *1 -16.7,94.6
-X$3 VDD DIN0 DIN1 \$11 \$4 \$3 \$5 \$2 WE VSS write_driver
-* cell instance $7 r0 *1 62.2,187.9
-X$7 VDD \$5 \$4 \$3 \$2 PCB EQEN VSS precharge
-* cell instance $11 r0 *1 383.1,-9998.1
-X$11 \$4 \$5 \$2 \$3 VDD \$6 \$7 VSS sram_2w2b
-* cell instance $13 r0 *1 55,81.7
-X$13 VDD \$5 DOUT0 \$2 DOUT1 VSS read_buffer
-* cell instance $26 r0 *1 -118.1,171.7
-X$26 A0 \$6 \$7 VDD WLE VSS decoder
+.SUBCKT sram_2w2b_top A0 DIN0 DIN1 DOUT0 DOUT1 PCB VDD VSS WE WLE
+* cell instance $2 r0 *1 55,81.7
+X$2 VDD \$22 DOUT0 \$33 DOUT1 VSS read_buffer
+* cell instance $4 r0 *1 -118.1,171.7
+X$4 A0 \$41 \$48 VDD WLE VSS decoder
+* cell instance $5 r0 *1 62.2,187.9
+X$5 VDD \$22 \$31 \$34 \$33 PCB \$35 VSS precharge
+* cell instance $6 r0 *1 383.1,-9998.1
+X$6 \$31 \$22 \$33 \$34 VDD \$41 \$48 VSS sram_2w2b
+* cell instance $10 r0 *1 -16.7,94.6
+X$10 VDD DIN0 DIN1 \$13 \$31 \$34 \$22 \$33 WE VSS write_driver
 * device instance $1 r0 *1 -71.9,98.9 PMOS
-XM$1 VDD WE \$11 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
-* device instance $2 r0 *1 -71.9,76.8 NMOS
-XM$2 VSS WE \$11 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+XM$1 VDD WE \$13 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r180 *1 83.4,207 PMOS
+XM$2 VDD PCB \$35 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 r0 *1 -71.9,76.8 NMOS
+XM$3 VSS WE \$13 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 r180 *1 83.4,229.1 NMOS
+XM$4 VSS PCB \$35 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
 .ENDS sram_2w2b_top
 
 * cell write_driver
