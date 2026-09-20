@@ -85,7 +85,7 @@ clean**となっています。
   Peripheral Circuits              Decoder / Write Driver / Precharge-EQ /
                                    Read Buffer
 
-  Top-level Pins                   12 pins (current design)
+  Top-level Pins                   10 pins (WEB / EQEN are generated internally)
 
   Layout Verification              LVS clean / Final DRC pending
   ------------------------------------------------------------------------
@@ -459,7 +459,7 @@ layout/2word_x_2bit/sram_2w2b_top.gds
 
 Top Layoutは約 **300um ×  220um** 内に、6T SRAM
 Core、Decoder、Write Driver、Precharge / Equalize、Read
-Bufferを統合しています。現状のTop-level I/Oは **12 pins** です。
+Bufferを統合しています。現状のTop-level I/Oは **10 pins** です。`WEB` および `EQEN` は内部生成としています。
 
 ### 9.4 Layout Verification
 
@@ -550,7 +550,7 @@ WL0 / WL7 selection + Read simulation
 
 ## 12. Current Top-level I/O and Future Improvements
 
-現在のTop-level I/Oは以下の12ピンです。
+現在のTop-level I/Oは以下の10ピンです。
 
 ``` text
 電源
@@ -558,16 +558,15 @@ VDD, VSS
 
 入力PIN
 A0, WLE
-WE, WEB
-PCB, EQEN
+WE
+PCB
 DIN0, DIN1
 
 出力PIN
 DOUT0, DOUT1
 ```
 
-今後は `WEB` や `EQEN`
-などの相補・制御信号を内部生成することで、外部ピン数を減らす余地があります。
+`WEB` および `EQEN` は内部生成とし、Top-level I/Oを従来の12ピンから10ピンへ削減しました。
 
 今回の設計では、まず**実際に動作する小規模SRAMをTR-10で作り、測定可能なベースラインを作ること**を優先しました。そのため、以下は今後の改善項目です。
 
@@ -575,7 +574,6 @@ DOUT0, DOUT1
 -   6T CellのPull-up / Access / Pull-down MOSのL/W最適化
 -   Sense Amplifierを含むRead Pathの再設計
 -   Bit Line負荷とSense Enable timingの最適化
--   外部ピン数の削減
 -   8-word評価結果を踏まえた、さらにWord数 / Bit数を増やした大容量化
 
 今回の設計をベースラインとして、**実際にTR-10で製造・測定した結果を次回の設計へフィードバックし、キーとなる部分を段階的に改善していく**ことを目標とします。
