@@ -1,0 +1,164 @@
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/tb_sram_2w8b.sch
+.subckt tb_sram_2w8b
+
+VVDD VDD 0 5
+VDIN0 DIN0 0 PWL(0 5 19.9n 5 20n 0 100n 0)
+VVSS VSS 0 0
+VWE WE 0 PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 19.9n 0 20n 5 29.9n 5 30n 0 100n 0)
+VPCB PCB 0 PWL(0 5 34.9n 5 35n 0 39.9n 0 40n 5 59.9n 5 60n 0 64.9n 0 65n 5 100n 5)
+x2 VDD VSS WL0 WLE A0 WL1 decoder
+VWLE WLE 0 PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 19.9n 0 20n 5 29.9n 5 30n 0 44.9n 0 45n 5 54.9n 5 55n 0 69.9n 0 70n 5 79.9n 5 80n 0
++ 100n 0)
+VA0 A0 0 PWL(0 0 16.9n 0 17n 5 31.9n 5 32n 0 56.9n 0 57n 5 100n 5)
+x3 DIN0 VDD BL0 BLB0 VSS VSS BL1 WE BLB1 WEB write_driver
+VDIN7 DIN7 0 PWL(0 0 19.9n 0 20n 5 100n 5)
+x4 VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1 precharge
+x5 VDD VSS BLB0 BLB1 DOUT0 DOUT1 read_buffer
+MXM1 WEB WE VSS VSS NMOS w=3.4u l=1u
+MXM2 WEB WE VDD VDD PMOS w=6.8u l=1u
+MXM3 EQEN PCB VSS VSS NMOS w=3.4u l=1u
+MXM4 EQEN PCB VDD VDD PMOS w=6.8u l=1u
+x6 WL0 VDD VSS WL1 BLB3 BL1 BLB0 BLB7 BLB2 BL3 BLB6 BL4 BLB4 BL5 BL6 BLB5 BL2 BL7 BLB1 BL0 sram_2w8b
+x1 VSS VDD BL2 BLB2 VSS VSS BL3 WE BLB3 WEB write_driver
+x7 VSS VDD BL4 BLB4 VSS VSS BL5 WE BLB5 WEB write_driver
+x8 VSS VDD BL6 BLB6 VSS DIN7 BL7 WE BLB7 WEB write_driver
+x9 VDD VSS PCB EQEN BL2 BLB2 BL3 BLB3 precharge
+x10 VDD VSS PCB EQEN BL4 BLB4 BL5 BLB5 precharge
+x11 VDD VSS PCB EQEN BL6 BLB6 BL7 BLB7 precharge
+x12 VDD VSS BLB2 BLB3 DOUT2 DOUT3 read_buffer
+x13 VDD VSS BLB4 BLB5 DOUT4 DOUT5 read_buffer
+x14 VDD VSS BLB0 BLB1 DOUT6 DOUT7 read_buffer
+**** begin user architecture code
+ .include /home/take/pdk/TR-1um/libs.tech/spice/models/ip62_models
+
+
+.tran 10p 100n
+
+.control
+run
+
+* Control signals
+plot v(pcb) v(eqen)+6
+plot v(we) v(web)+6
+plot v(wl0) v(wl1)+6
+
+* Input / Output
+plot v(din0) v(din7)+6
+plot v(dout1) v(dout7)+6
+
+* Read bit-line differential
+plot v(bl1) v(blb1)
+plot v(bl7) v(blb7)
+
+.endc
+
+
+**** end user architecture code
+.ends
+
+* expanding   symbol:  decoder.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/decoder.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/decoder.sch
+.subckt decoder VDD VSS WL0 WLE A0 WL1
+*.PININFO VDD:B VSS:B WLE:I WL0:O WL1:O A0:I
+MXM7 A0B A0 VDD VDD PMOS w=6.8u l=1u
+MXM8 A0B A0 VSS VSS NMOS w=3.4u l=1u
+MXM9 net2 WLE VDD VDD PMOS w=6.8u l=1u
+MXM10 net1 WLE VSS VSS NMOS w=6.8u l=1u
+MXM11 net2 A0B net1 VSS NMOS w=6.8u l=1u
+MXM12 net2 A0B VDD VDD PMOS w=6.8u l=1u
+MXM13 WL0 net2 VDD VDD PMOS w=6.8u l=1u
+MXM14 WL0 net2 VSS VSS NMOS w=3.4u l=1u
+MXM15 net4 WLE VDD VDD PMOS w=6.8u l=1u
+MXM16 net3 WLE VSS VSS NMOS w=6.8u l=1u
+MXM17 net4 A0 net3 VSS NMOS w=6.8u l=1u
+MXM18 net4 A0 VDD VDD PMOS w=6.8u l=1u
+MXM19 WL1 net4 VDD VDD PMOS w=6.8u l=1u
+MXM20 WL1 net4 VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  write_driver.sym # of pins=10
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/write_driver.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/write_driver.sch
+.subckt write_driver DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB
+*.PININFO DIN0:I DIN1:I WE:I WEB:I BL0:B BLB0:B BL1:B BLB1:B VDD:B VSS:B
+MXM15 DIN0B DIN0 VDD VDD PMOS w=6.8u l=1u
+MXM16 DIN0B DIN0 VSS VSS NMOS w=3.4u l=1u
+MXM7 BL0 WE DIN0 VSS NMOS w=5.2u l=1u
+MXM8 DIN0 WEB BL0 VDD PMOS w=6.8u l=1u
+MXM1 BLB0 WE DIN0B VSS NMOS w=5.2u l=1u
+MXM2 DIN0B WEB BLB0 VDD PMOS w=6.8u l=1u
+MXM3 DIN1B DIN1 VDD VDD PMOS w=6.8u l=1u
+MXM4 DIN1B DIN1 VSS VSS NMOS w=3.4u l=1u
+MXM5 BL1 WE DIN1 VSS NMOS w=5.2u l=1u
+MXM6 DIN1 WEB BL1 VDD PMOS w=6.8u l=1u
+MXM9 BLB1 WE DIN1B VSS NMOS w=5.2u l=1u
+MXM10 DIN1B WEB BLB1 VDD PMOS w=6.8u l=1u
+.ends
+
+
+* expanding   symbol:  precharge.sym # of pins=8
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/precharge.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/precharge.sch
+.subckt precharge VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1
+*.PININFO VDD:B VSS:B PCB:I EQEN:I BL0:B BLB0:B BL1:B BLB1:B
+MXM9 BL0 PCB VDD VDD PMOS w=3.4u l=1u
+MXM10 BLB0 PCB VDD VDD PMOS w=3.4u l=1u
+MXM11 BL0 EQEN BLB0 VSS NMOS w=3.4u l=1u
+MXM12 BL1 PCB VDD VDD PMOS w=3.4u l=1u
+MXM13 BLB1 PCB VDD VDD PMOS w=3.4u l=1u
+MXM14 BL1 EQEN BLB1 VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  read_buffer.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/read_buffer.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/read_buffer.sch
+.subckt read_buffer VDD VSS BLB0 BLB1 DOUT0 DOUT1
+*.PININFO VDD:B VSS:B BLB0:I BLB1:I DOUT0:O DOUT1:O
+MXM15 DOUT0 BLB0 VDD VDD PMOS w=6.8u l=1u
+MXM16 DOUT0 BLB0 VSS VSS NMOS w=3.4u l=1u
+MXM1 DOUT1 BLB1 VDD VDD PMOS w=6.8u l=1u
+MXM2 DOUT1 BLB1 VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  sram_2w8b.sym # of pins=20
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_2w8b.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_2w8b.sch
+.subckt sram_2w8b WL0 VDD VSS WL1 BLB3 BL1 BLB0 BLB7 BLB2 BL3 BLB6 BL4 BLB4 BL5 BL6 BLB5 BL2 BL7 BLB1 BL0
+*.PININFO VDD:B VSS:B WL0:I WL1:I BL0:B BLB0:B BL1:B BLB1:B BL2:B BLB2:B BL3:B BLB3:B BL4:B BLB4:B BL5:B BLB5:B BL6:B BLB6:B BL7:B
+*+ BLB7:B
+x1 BL0 BLB0 WL1 VDD VSS sram6t_tr10
+x2 BL0 BLB0 WL0 VDD VSS sram6t_tr10
+x3 BL1 BLB1 WL0 VDD VSS sram6t_tr10
+x4 BL1 BLB1 WL1 VDD VSS sram6t_tr10
+x5 BL2 BLB2 WL1 VDD VSS sram6t_tr10
+x6 BL2 BLB2 WL0 VDD VSS sram6t_tr10
+x7 BL3 BLB3 WL0 VDD VSS sram6t_tr10
+x8 BL3 BLB3 WL1 VDD VSS sram6t_tr10
+x9 BL4 BLB4 WL1 VDD VSS sram6t_tr10
+x10 BL4 BLB4 WL0 VDD VSS sram6t_tr10
+x11 BL5 BLB5 WL0 VDD VSS sram6t_tr10
+x12 BL5 BLB5 WL1 VDD VSS sram6t_tr10
+x13 BL6 BLB6 WL1 VDD VSS sram6t_tr10
+x14 BL6 BLB6 WL0 VDD VSS sram6t_tr10
+x15 BL7 BLB7 WL0 VDD VSS sram6t_tr10
+x16 BL7 BLB7 WL1 VDD VSS sram6t_tr10
+.ends
+
+
+* expanding   symbol:  sram6t_tr10.sym # of pins=5
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram6t_tr10.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram6t_tr10.sch
+.subckt sram6t_tr10 BL BLB WL VDD VSS
+*.PININFO BL:B BLB:B WL:I VDD:B VSS:B
+MXM1 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM2 net2 net1 VDD VDD PMOS w=3.4u l=1u
+MXM4 net2 net1 VSS VSS NMOS w=6.8u l=1u
+MXM3 net1 net2 VSS VSS NMOS w=6.8u l=1u
+MXM5 BL WL net1 VSS NMOS w=5.1u l=1u
+MXM6 BLB WL net2 VSS NMOS w=5.1u l=1u
+.ends
+

@@ -1,0 +1,212 @@
+* Created by KLayout
+*** My special header ***
+
+* cell sram_2w2b_top
+* pin A0
+* pin DIN0
+* pin DIN1
+* pin DOUT0
+* pin DOUT1
+* pin PCB
+* pin VDD
+* pin VSS
+* pin WE
+* pin WLE
+.SUBCKT sram_2w2b_top A0 DIN0 DIN1 DOUT0 DOUT1 PCB VDD VSS WE WLE
+* cell instance $2 r0 *1 55,81.7
+X$2 VDD \$22 DOUT0 \$33 DOUT1 VSS read_buffer
+* cell instance $4 r0 *1 -118.1,171.7
+X$4 A0 \$41 \$48 VDD WLE VSS decoder
+* cell instance $5 r0 *1 62.2,187.9
+X$5 VDD \$22 \$31 \$34 \$33 PCB \$35 VSS precharge
+* cell instance $6 r0 *1 383.1,-9998.1
+X$6 \$31 \$22 \$33 \$34 VDD \$41 \$48 VSS sram_2w2b
+* cell instance $10 r0 *1 -16.7,94.6
+X$10 VDD DIN0 DIN1 \$13 \$31 \$34 \$22 \$33 WE VSS write_driver
+* device instance $1 r0 *1 -71.9,98.9 PMOS
+XM$1 VDD WE \$13 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r180 *1 83.4,207 PMOS
+XM$2 VDD PCB \$35 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 r0 *1 -71.9,76.8 NMOS
+XM$3 VSS WE \$13 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 r180 *1 83.4,229.1 NMOS
+XM$4 VSS PCB \$35 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS sram_2w2b_top
+
+* cell write_driver
+* pin VDD
+* pin DIN0
+* pin DIN1
+* pin WEB
+* pin BL0
+* pin BL1
+* pin BLB0
+* pin BLB1
+* pin WE
+* pin VSS
+.SUBCKT write_driver VDD DIN0 DIN1 WEB BL0 BL1 BLB0 BLB1 WE VSS
+* device instance $1 r0 *1 36.4,-1.2 PMOS
+XM$1 DIN1 WEB BL1 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r0 *1 23.4,-1.2 PMOS
+XM$2 BLB1 WEB \$9 VDD PMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $3 r0 *1 27.4,-1.2 PMOS
+XM$3 \$9 DIN1 VDD VDD PMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $4 r0 *1 -1.2,-1.2 PMOS
+XM$4 VDD DIN0 \$5 VDD PMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $5 r0 *1 2.8,-1.2 PMOS
+XM$5 \$5 WEB BLB0 VDD PMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $6 r0 *1 -10.2,-1.2 PMOS
+XM$6 BL0 WEB DIN0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $7 r180 *1 -1.2,-23.3 NMOS
+XM$7 \$5 DIN0 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $8 m0 *1 27.4,-23.3 NMOS
+XM$8 \$9 DIN1 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $9 r0 *1 -10.2,22 NMOS
+XM$9 BL0 WE DIN0 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $10 m90 *1 36.4,22 NMOS
+XM$10 BL1 WE DIN1 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $11 r0 *1 2.8,22 NMOS
+XM$11 \$5 WE BLB0 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $12 m90 *1 23.4,22 NMOS
+XM$12 \$9 WE BLB1 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+.ENDS write_driver
+
+* cell sram_2w2b
+* pin BL0
+* pin BLB0
+* pin BLB1
+* pin BL1
+* pin VDD
+* pin WL0
+* pin WL1
+* pin VSS
+.SUBCKT sram_2w2b BL0 BLB0 BLB1 BL1 VDD WL0 WL1 VSS
+* device instance $1 r0 *1 -376.4,10198 PMOS
+XM$1 QB$1 Q$1 VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=10.81p PS=12.4u PD=9u
+* device instance $2 r0 *1 -370.8,10198 PMOS
+XM$2 VDD QB$1 Q$1 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $3 r0 *1 -376.4,10206 PMOS
+XM$3 VDD Q$3 QB$3 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $4 r0 *1 -370.8,10206 PMOS
+XM$4 VDD QB$3 Q$3 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $5 r0 *1 -402.6,10198 PMOS
+XM$5 Q QB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=10.81p PS=12.4u PD=9u
+* device instance $6 r0 *1 -397,10198 PMOS
+XM$6 VDD Q QB VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $7 r0 *1 -402.6,10206 PMOS
+XM$7 VDD QB$2 Q$2 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $8 r0 *1 -397,10206 PMOS
+XM$8 VDD Q$2 QB$2 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $9 r0 *1 -402.6,10228.1 NMOS
+XM$9 Q$2 QB$2 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $10 r0 *1 -397,10228.1 NMOS
+XM$10 VSS Q$2 QB$2 VSS NMOS L=1u W=6.8u AS=19.02p AD=26.35p PS=14u PD=15.3u
+* device instance $11 r0 *1 -406.1,10235 NMOS
+XM$11 Q$2 WL1 BL0 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $12 r0 *1 -393.6,10235 NMOS
+XM$12 QB$2 WL1 BLB0 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $13 r0 *1 -406.1,10169 NMOS
+XM$13 BL0 WL0 Q VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $14 r0 *1 -393.6,10169 NMOS
+XM$14 BLB0 WL0 QB VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $15 r0 *1 -402.6,10175.9 NMOS
+XM$15 Q QB VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $16 r0 *1 -397,10175.9 NMOS
+XM$16 QB Q VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $17 r0 *1 -379.9,10169 NMOS
+XM$17 BLB1 WL0 QB$1 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $18 r0 *1 -367.4,10169 NMOS
+XM$18 BL1 WL0 Q$1 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $19 r0 *1 -376.4,10175.9 NMOS
+XM$19 QB$1 Q$1 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $20 r0 *1 -370.8,10175.9 NMOS
+XM$20 Q$1 QB$1 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $21 r0 *1 -376.4,10228.1 NMOS
+XM$21 QB$3 Q$3 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $22 r0 *1 -370.8,10228.1 NMOS
+XM$22 VSS QB$3 Q$3 VSS NMOS L=1u W=6.8u AS=19.02p AD=26.35p PS=14u PD=15.3u
+* device instance $23 r0 *1 -379.9,10235 NMOS
+XM$23 QB$3 WL1 BLB1 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $24 r0 *1 -367.4,10235 NMOS
+XM$24 Q$3 WL1 BL1 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+.ENDS sram_2w2b
+
+* cell read_buffer
+* pin VDD
+* pin BLB0
+* pin DOUT0
+* pin BLB1
+* pin DOUT1
+* pin VSS
+.SUBCKT read_buffer VDD BLB0 DOUT0 BLB1 DOUT1 VSS
+* device instance $1 m135 *1 6.8,24.9 PMOS
+XM$1 VDD BLB0 DOUT0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r270 *1 36.6,24.9 PMOS
+XM$2 VDD BLB1 DOUT1 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 m135 *1 5.1,1.3 NMOS
+XM$3 DOUT0 BLB0 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 r270 *1 38.3,1.3 NMOS
+XM$4 DOUT1 BLB1 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS read_buffer
+
+* cell precharge
+* pin VDD
+* pin BLB0
+* pin BL0
+* pin BL1
+* pin BLB1
+* pin PCB
+* pin EQEN
+* pin VSS
+.SUBCKT precharge VDD BLB0 BL0 BL1 BLB1 PCB EQEN VSS
+* device instance $1 m45 *1 0,0 PMOS
+XM$1 BLB0 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $2 m45 *1 23.2,0 PMOS
+XM$2 BL1 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $3 m45 *1 29,0 PMOS
+XM$3 BLB1 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 m45 *1 5.8,0 PMOS
+XM$4 BL0 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $5 m0 *1 2.8,-22 NMOS
+XM$5 BLB0 EQEN BL0 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $6 m0 *1 26,-22 NMOS
+XM$6 BL1 EQEN BLB1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS precharge
+
+* cell decoder
+* pin A0
+* pin WL0
+* pin WL1
+* pin VDD
+* pin WLE
+* pin VSS
+.SUBCKT decoder A0 WL0 WL1 VDD WLE VSS
+* device instance $1 r0 *1 23.4,60.8 NMOS
+XM$1 \$6 A0 \$33 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $2 r0 *1 23.4,64.8 NMOS
+XM$2 \$33 WLE VSS VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $3 r0 *1 23.4,-0.4 NMOS
+XM$3 VSS WLE \$37 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $4 r0 *1 23.4,3.6 NMOS
+XM$4 \$37 \$1 \$4 VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $5 m135 *1 12.7,27.2 PMOS
+XM$5 VDD \$1 \$4 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $6 m45 *1 -0.5,27.2 PMOS
+XM$6 \$1 A0 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $7 m135 *1 12.7,37.2 PMOS
+XM$7 \$6 A0 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $8 m135 *1 40.6,27.2 PMOS
+XM$8 VDD \$4 WL0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $9 m135 *1 23.4,27.2 PMOS
+XM$9 VDD WLE \$4 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $10 m135 *1 40.6,37.2 PMOS
+XM$10 WL1 \$6 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $11 m135 *1 23.4,37.2 PMOS
+XM$11 \$6 WLE VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $12 m45 *1 -2.5,1.6 NMOS
+XM$12 VSS A0 \$1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $13 m135 *1 38.9,-0.4 NMOS
+XM$13 WL0 \$4 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $14 m135 *1 38.9,64.8 NMOS
+XM$14 VSS \$6 WL1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS decoder
