@@ -118,7 +118,13 @@ C {devices/code_shown.sym} 1790 -390 0 0 {name=SPICE only_toplevel=false value="
 
 .meas tran t_read0 TRIG v(wl0) VAL=2.5 RISE=2 TARG v(dout0) VAL=2.5 RISE=1 TD=40n
 .meas tran t_read1 TRIG v(wl1) VAL=2.5 RISE=2 TARG v(dout1) VAL=2.5 RISE=1 TD=65n
-
+.meas tran t_wl0_rise WHEN v(WL0)=2.5 RISE=1
+.meas tran t_dout0_rise WHEN v(DOUT0)=2.5 RISE=1
+.meas tran td_read0 PARAM='t_dout0_rise-t_wl0_rise'
+.meas tran dvbl0_05 FIND par('abs(v(BL0)-v(BLB0))') AT=46.88n
+.meas tran dvbl0_10 FIND par('abs(v(BL0)-v(BLB0))') AT=47.38n
+.meas tran dvbl1_05 FIND par('abs(v(BL1)-v(BLB1))') AT=46.88n
+.meas tran dvbl1_10 FIND par('abs(v(BL1)-v(BLB1))') AT=47.38n
 .control
 run
 plot v(pcb) v(eqen)+6
