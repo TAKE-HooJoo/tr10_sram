@@ -1,0 +1,40 @@
+* Created by KLayout
+*** My special header ***
+
+* cell decoder
+* pin A0
+* pin VDD
+* pin VSS
+* pin WL0
+* pin WL1
+* pin WLE
+.SUBCKT decoder A0 VDD VSS WL0 WL1 WLE
+* device instance $1 r0 *1 23.4,60.8 NMOS
+XM$1 \$6 A0 \$34 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $2 r0 *1 23.4,64.8 NMOS
+XM$2 \$34 WLE VSS VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $3 r0 *1 23.4,-0.4 NMOS
+XM$3 VSS WLE \$38 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $4 r0 *1 23.4,3.6 NMOS
+XM$4 \$38 \$1 \$4 VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $5 m135 *1 12.7,27.2 PMOS
+XM$5 VDD \$1 \$4 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $6 m45 *1 -0.5,27.2 PMOS
+XM$6 \$1 A0 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $7 m135 *1 12.7,37.2 PMOS
+XM$7 \$6 A0 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $8 m135 *1 40.6,27.2 PMOS
+XM$8 VDD \$4 WL0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $9 m135 *1 23.4,27.2 PMOS
+XM$9 VDD WLE \$4 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $10 m135 *1 40.6,37.2 PMOS
+XM$10 WL1 \$6 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $11 m135 *1 23.4,37.2 PMOS
+XM$11 \$6 WLE VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $12 m45 *1 -2.5,1.6 NMOS
+XM$12 VSS A0 \$1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $13 m135 *1 38.9,-0.4 NMOS
+XM$13 WL0 \$4 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $14 m135 *1 38.9,64.8 NMOS
+XM$14 VSS \$6 WL1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS decoder

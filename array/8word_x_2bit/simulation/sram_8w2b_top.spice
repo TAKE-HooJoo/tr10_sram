@@ -1,0 +1,172 @@
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_8w2b_top.sch
+**.subckt sram_8w2b_top VDD WLE DOUT0 VSS A0 WE DIN0 DIN1 PCB DOUT1
+*.iopin VDD
+*.ipin WLE
+*.opin DOUT0
+*.iopin VSS
+*.ipin A0
+*.ipin WE
+*.ipin DIN0
+*.ipin DIN1
+*.ipin PCB
+*.opin DOUT1
+x2 VDD VSS WL0 WLE A0 WL1 decoder
+x3 DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB write_driver
+x4 VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1 precharge
+x5 VDD VSS BLB0 BLB1 DOUT0 DOUT1 read_buffer
+XXM1 WEB WE VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM2 WEB WE VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM3 EQEN PCB VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM4 EQEN PCB VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+x1 WL0 BL0 BL1 VDD BLB1 VSS VSS BLB0 VSS VSS VSS VSS VSS WL1 sram_8w2b
+**.ends
+
+* expanding   symbol:  decoder.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/decoder.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/decoder.sch
+.subckt decoder VDD VSS WL0 WLE A0 WL1
+*.iopin VDD
+*.iopin VSS
+*.ipin WLE
+*.opin WL0
+*.opin WL1
+*.ipin A0
+XXM7 A0B A0 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM8 A0B A0 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM9 net2 WLE VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM10 net1 WLE VSS VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM11 net2 A0B net1 VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM12 net2 A0B VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM13 WL0 net2 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM14 WL0 net2 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM15 net4 WLE VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM16 net3 WLE VSS VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM17 net4 A0 net3 VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM18 net4 A0 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM19 WL1 net4 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM20 WL1 net4 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+.ends
+
+
+* expanding   symbol:  write_driver.sym # of pins=10
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/write_driver.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/write_driver.sch
+.subckt write_driver DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB
+*.ipin DIN0
+*.ipin DIN1
+*.ipin WE
+*.ipin WEB
+*.iopin BL0
+*.iopin BLB0
+*.iopin BL1
+*.iopin BLB1
+*.iopin VDD
+*.iopin VSS
+XXM15 DIN0B DIN0 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM16 DIN0B DIN0 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM7 BL0 WE DIN0 VSS NMOS w=5.2u l=1u nrd=0 nrs=0
+XXM8 DIN0 WEB BL0 VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM1 BLB0 WE DIN0B VSS NMOS w=5.2u l=1u nrd=0 nrs=0
+XXM2 DIN0B WEB BLB0 VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM3 DIN1B DIN1 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM4 DIN1B DIN1 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM5 BL1 WE DIN1 VSS NMOS w=5.2u l=1u nrd=0 nrs=0
+XXM6 DIN1 WEB BL1 VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM9 BLB1 WE DIN1B VSS NMOS w=5.2u l=1u nrd=0 nrs=0
+XXM10 DIN1B WEB BLB1 VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+.ends
+
+
+* expanding   symbol:  precharge.sym # of pins=8
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/precharge.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/precharge.sch
+.subckt precharge VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1
+*.iopin VDD
+*.iopin VSS
+*.ipin PCB
+*.ipin EQEN
+*.iopin BL0
+*.iopin BLB0
+*.iopin BL1
+*.iopin BLB1
+XXM9 BL0 PCB VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM10 BLB0 PCB VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM11 BL0 EQEN BLB0 VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM12 BL1 PCB VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM13 BLB1 PCB VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM14 BL1 EQEN BLB1 VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+.ends
+
+
+* expanding   symbol:  read_buffer.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/read_buffer.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/read_buffer.sch
+.subckt read_buffer VDD VSS BLB0 BLB1 DOUT0 DOUT1
+*.iopin VDD
+*.iopin VSS
+*.ipin BLB0
+*.ipin BLB1
+*.opin DOUT0
+*.opin DOUT1
+XXM15 DOUT0 BLB0 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM16 DOUT0 BLB0 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+XXM1 DOUT1 BLB1 VDD VDD PMOS w=6.8u l=1u nrd=0 nrs=0
+XXM2 DOUT1 BLB1 VSS VSS NMOS w=3.4u l=1u nrd=0 nrs=0
+.ends
+
+
+* expanding   symbol:  sram_8w2b.sym # of pins=14
+** sym_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_8w2b.sym
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_8w2b.sch
+.subckt sram_8w2b WL0 BL0 BL1 VDD BLB1 VSS WL1 BLB0 WL2 WL3 WL4 WL5 WL6 WL7
+*.iopin VDD
+*.iopin VSS
+*.iopin BL0
+*.iopin BLB0
+*.iopin BL1
+*.iopin BLB1
+*.ipin WL0
+*.ipin WL1
+*.ipin WL2
+*.ipin WL3
+*.ipin WL4
+*.ipin WL5
+*.ipin WL6
+*.ipin WL7
+x1 BL0 BLB0 WL1 VDD VSS sram6t_tr10
+x2 BL1 BLB1 WL1 VDD VSS sram6t_tr10
+x3 BL0 BLB0 WL0 VDD VSS sram6t_tr10
+x4 BL1 BLB1 WL0 VDD VSS sram6t_tr10
+x5 BL0 BLB0 WL3 VDD VSS sram6t_tr10
+x6 BL1 BLB1 WL3 VDD VSS sram6t_tr10
+x7 BL0 BLB0 WL2 VDD VSS sram6t_tr10
+x8 BL1 BLB1 WL2 VDD VSS sram6t_tr10
+x9 BL0 BLB0 WL5 VDD VSS sram6t_tr10
+x10 BL1 BLB1 WL5 VDD VSS sram6t_tr10
+x11 BL0 BLB0 WL4 VDD VSS sram6t_tr10
+x12 BL1 BLB1 WL4 VDD VSS sram6t_tr10
+x13 BL0 BLB0 WL7 VDD VSS sram6t_tr10
+x14 BL1 BLB1 WL7 VDD VSS sram6t_tr10
+x15 BL0 BLB0 WL6 VDD VSS sram6t_tr10
+x16 BL1 BLB1 WL6 VDD VSS sram6t_tr10
+.ends
+
+
+* expanding   symbol:  /home/take/Design/tr10_sram/cell/sram6t_tr10.sym # of pins=5
+** sym_path: /home/take/Design/tr10_sram/cell/sram6t_tr10.sym
+** sch_path: /home/take/Design/tr10_sram/cell/sram6t_tr10.sch
+.subckt sram6t_tr10 BL BLB WL VDD VSS
+*.iopin BL
+*.iopin BLB
+*.ipin WL
+*.iopin VDD
+*.iopin VSS
+XXM1 Q QB VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM2 QB Q VDD VDD PMOS w=3.4u l=1u nrd=0 nrs=0
+XXM4 QB Q VSS VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM3 Q QB VSS VSS NMOS w=6.8u l=1u nrd=0 nrs=0
+XXM5 BL WL Q VSS NMOS w=5.1u l=1u nrd=0 nrs=0
+XXM6 BLB WL QB VSS NMOS w=5.1u l=1u nrd=0 nrs=0
+.ends
+
+.end

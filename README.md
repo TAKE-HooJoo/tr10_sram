@@ -1,7 +1,8 @@
 # はじめてのSRAM設計
 
 OpenSUSI TR10 PDKを使用し、**6T
-SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM**です。
+SRAMセルからトランジスタレベルで設計した 2-word × 2-bit SRAM**をベースラインとして、
+さらに **8-word × 2-bit SRAM**へアレイ深さを拡張して評価しています。
 
 SRAMをブラックボックスとして使用するのではなく、セル設計、シミュレーション、アレイ化、Decoder、Write
 Driver、Precharge / Equalize、Read
@@ -319,19 +320,126 @@ accessは約 **1.25 ns** でした。
 
 ------------------------------------------------------------------------
 
-## 8. Layout
+## 8. 8-word × 2-bit SRAM Array Evaluation
 
-### 8.1 SRAM Cell Layout
+2-word × 2-bit SRAMをベースラインとして、Bit Line負荷の増加がRead性能へ与える影響を確認するため、
+SRAMアレイを **8-word × 2-bit（16 bit）**へ拡張しました。
+
+### 8.1 8-word × 2-bit Array
+
+8-word × 2-bitアレイは、16個の6T SRAM Cellで構成しています。
+
+``` text
+             BL0 / BLB0       BL1 / BLB1
+                  │                 │
+
+WL7 ───────── [CELL70]          [CELL71]
+WL6 ───────── [CELL60]          [CELL61]
+WL5 ───────── [CELL50]          [CELL51]
+WL4 ───────── [CELL40]          [CELL41]
+WL3 ───────── [CELL30]          [CELL31]
+WL2 ───────── [CELL20]          [CELL21]
+WL1 ───────── [CELL10]          [CELL11]
+WL0 ───────── [CELL00]          [CELL01]
+
+                  │                 │
+                bit0              bit1
+```
+
+### 8.2 Word Line Selection
+
+今回の8-word版ではフル3-to-8 Decoderは追加せず、
+2-word × 2-bit Topで使用したDecoderおよび周辺回路を再利用しています。
+
+評価対象は物理アレイの両端にある **WL0とWL7** とし、中間のWL1～WL6はVSSへ固定しています。
+
+``` text
+最上段  WL7  ← Decoder WL1（選択可能）
+        WL6  ← VSS
+        WL5  ← VSS
+        WL4  ← VSS
+        WL3  ← VSS
+        WL2  ← VSS
+        WL1  ← VSS
+最下段  WL0  ← Decoder WL0（選択可能）
+```
+
+これにより、2-word版の周辺回路を維持したまま、
+8-word分のSRAM Cellが接続されたBL / BLB負荷でRead / Write動作を評価できます。
+
+### 8.3 Read Delay Comparison
+
+2-word版と8-word版について、同一の周辺回路およびシミュレーション条件でRead delayを比較しました。
+
+| 項目 | 2w2b | 8w2b | 増加量 | 増加率 |
+|---|---:|---:|---:|---:|
+| Read delay (bit 0) | 1.280647 ns | 1.625134 ns | +0.344487 ns | +26.9% |
+| Read delay (bit 1) | 1.277820 ns | 1.597732 ns | +0.319912 ns | +25.0% |
+
+8-word化によって、シミュレーション上のRead delayは約 **25～27%増加**しました。
+
+### 8.4 BL / BLB Differential Comparison
+
+Word Line立上り後の同一時刻で、BL / BLB差動電圧
+
+``` text
+ΔVBL = |BL - BLB|
+```
+
+を比較しました。
+
+#### WL立上り約0.5 ns後
+
+| Bit | 2w2b | 8w2b | 変化率 |
+|---|---:|---:|---:|
+| bit 0 | 1.698 V | 0.916 V | -46.0% |
+| bit 1 | 2.109 V | 0.747 V | -64.6% |
+
+#### WL立上り約1.0 ns後
+
+| Bit | 2w2b | 8w2b | 変化率 |
+|---|---:|---:|---:|
+| bit 0 | 3.587 V | 2.261 V | -37.0% |
+| bit 1 | 4.252 V | 2.383 V | -44.0% |
+
+8-word版ではRead初期のBL / BLB差動形成が2-word版より遅くなっています。
+
+この結果は、
+
+``` text
+Array depth増加
+       ↓
+BL / BLBに接続されるSRAM Cell数増加
+       ↓
+Bit Line負荷増加
+       ↓
+BL / BLB差動形成の遅延
+       ↓
+Read delay増加
+```
+
+という挙動と整合的です。
+
+2-wordから8-wordへアレイ深さを拡張した結果、
+Read delayの増加だけでなく、その要因となるBL / BLB差動形成の変化を定量的に確認できました。
+
+8-word × 2-bit SRAMの詳細は `array/8word_x_2bit/README.md` にまとめます。
+
+------------------------------------------------------------------------
+
+## 9. Layout
+
+### 9.1 SRAM Cell Layout
 
 6T SRAM CellをKLayoutでレイアウトし、2-word × 2-bit
 Arrayの基本セルとして使用します。
 
-### 8.2 2-word × 2-bit Array Layout
+### 9.2 2-word × 2-bit Array Layout
 
 4個のSRAM Cellを配置し、WLおよびBL /
 BLBを共有するアレイ構造を構成します。
 
-### 8.3 SRAM Top Layout
+### 9.3 SRAM Top Layout
 
 以下の5ブロックを統合したSRAM Top Layoutを作成しました。
 
@@ -353,7 +461,7 @@ Top Layoutは約 **300um ×  220um** 内に、6T SRAM
 Core、Decoder、Write Driver、Precharge / Equalize、Read
 Bufferを統合しています。現状のTop-level I/Oは **12 pins** です。
 
-### 8.4 Layout Verification
+### 9.4 Layout Verification
 
 現在のTop
 Layoutは、各ブロックおよびTop全体について回路図との比較を行い、**LVS
@@ -377,7 +485,7 @@ LVS CLEAN
 
 ------------------------------------------------------------------------
 
-## 9. Design Highlights
+## 10. Design Highlights
 
 ### Small but Complete SRAM Array
 
@@ -410,7 +518,7 @@ Xschem、ngspice、KLayoutを使用し、回路設計からシミュレーショ
 
 ------------------------------------------------------------------------
 
-## 10. Current Status
+## 11. Current Status
 
 ``` text
 6T SRAM Cell
@@ -427,14 +535,20 @@ SRAM Top Layout
      ↓
 Top-level LVS
      ↓
-LVS CLEAN  ← Current physical-design milestone
+LVS CLEAN  ← 2-word × 2-bit physical-design milestone
+     ↓
+8-word × 2-bit Array
+     ↓
+WL0 / WL7 selection + Read simulation
+     ↓
+2w2b / 8w2b Read delay・BL差動比較  ← Current evaluation milestone
 
-Final submission DRC  ← Next
+8-word × 2-bit Top Layout / DRC / LVS  ← Next
 ```
 
 ------------------------------------------------------------------------
 
-## 11. Current Top-level I/O and Future Improvements
+## 12. Current Top-level I/O and Future Improvements
 
 現在のTop-level I/Oは以下の12ピンです。
 
@@ -462,13 +576,13 @@ DOUT0, DOUT1
 -   Sense Amplifierを含むRead Pathの再設計
 -   Bit Line負荷とSense Enable timingの最適化
 -   外部ピン数の削減
--   Word数 / Bit数を増やした大容量化
+-   8-word評価結果を踏まえた、さらにWord数 / Bit数を増やした大容量化
 
 今回の設計をベースラインとして、**実際にTR-10で製造・測定した結果を次回の設計へフィードバックし、キーとなる部分を段階的に改善していく**ことを目標とします。
 
 ------------------------------------------------------------------------
 
-## 12. Repository Structure
+## 14. Repository Structure
 
 ``` text
 tr10_sram/
@@ -489,13 +603,20 @@ tr10_sram/
 │   └── tb_snm.sch
 │
 ├── array/
-│   └── 2word_x_2bit/
-│       ├── sram_2w2b.sch / .sym
-│       ├── decoder.sch / .sym
-│       ├── write_driver.sch / .sym
-│       ├── precharge.sch / .sym
-│       ├── read_buffer.sch / .sym
-│       └── sram_2w2b_top.sch
+│   ├── 2word_x_2bit/
+│   │   ├── sram_2w2b.sch / .sym
+│   │   ├── decoder.sch / .sym
+│   │   ├── write_driver.sch / .sym
+│   │   ├── precharge.sch / .sym
+│   │   ├── read_buffer.sch / .sym
+│   │   └── sram_2w2b_top.sch
+│   │
+│   └── 8word_x_2bit/
+│       ├── README.md
+│       ├── sram_8w2b.sch / .sym
+│       ├── sram_8w2b.gds
+│       ├── sram_8w2b_top.sch
+│       └── sram_8w2b_top.gds
 │
 ├── layout/
 │   ├── cell/
@@ -518,13 +639,13 @@ tr10_sram/
 
 ------------------------------------------------------------------------
 
-## 13. Repository
+## 14. Repository
 
 `TAKE-HooJoo/tr10_sram`
 
 ------------------------------------------------------------------------
 
-## 14. Design Philosophy
+## 15. Design Philosophy
 
 最初から完成したSRAMマクロを目指すのではなく、次のサイクルを重視します。
 （いいわけ）

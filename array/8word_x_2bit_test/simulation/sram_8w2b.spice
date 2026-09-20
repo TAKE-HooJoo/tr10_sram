@@ -1,0 +1,34 @@
+** sch_path: /home/take/Design/tr10_sram/array/8word_x_2bit/sram_8w2b.sch
+.subckt sram_8w2b VDD VSS BL0 BLB0 BL1 BLB1 WL0 WL1 WL2 WL3 WL4 WL5 WL6 WL7
+*.PININFO VDD:B VSS:B BL0:B BLB0:B BL1:B BLB1:B WL0:I WL1:I WL2:I WL3:I WL4:I WL5:I WL6:I WL7:I
+x1 BL0 BLB0 WL1 VDD VSS sram6t_tr10
+x2 BL1 BLB1 WL1 VDD VSS sram6t_tr10
+x3 BL0 BLB0 WL0 VDD VSS sram6t_tr10
+x4 BL1 BLB1 WL0 VDD VSS sram6t_tr10
+x5 BL0 BLB0 WL3 VDD VSS sram6t_tr10
+x6 BL1 BLB1 WL3 VDD VSS sram6t_tr10
+x7 BL0 BLB0 WL2 VDD VSS sram6t_tr10
+x8 BL1 BLB1 WL2 VDD VSS sram6t_tr10
+x9 BL0 BLB0 WL5 VDD VSS sram6t_tr10
+x10 BL1 BLB1 WL5 VDD VSS sram6t_tr10
+x11 BL0 BLB0 WL4 VDD VSS sram6t_tr10
+x12 BL1 BLB1 WL4 VDD VSS sram6t_tr10
+x13 BL0 BLB0 WL7 VDD VSS sram6t_tr10
+x14 BL1 BLB1 WL7 VDD VSS sram6t_tr10
+x15 BL0 BLB0 WL6 VDD VSS sram6t_tr10
+x16 BL1 BLB1 WL6 VDD VSS sram6t_tr10
+.ends
+
+* expanding   symbol:  /home/take/Design/tr10_sram/cell/sram6t_tr10.sym # of pins=5
+** sym_path: /home/take/Design/tr10_sram/cell/sram6t_tr10.sym
+** sch_path: /home/take/Design/tr10_sram/cell/sram6t_tr10.sch
+.subckt sram6t_tr10 BL BLB WL VDD VSS
+*.PININFO BL:B BLB:B WL:I VDD:B VSS:B
+MXM1 Q QB VDD VDD PMOS w=3.4u l=1u
+MXM2 QB Q VDD VDD PMOS w=3.4u l=1u
+MXM4 QB Q VSS VSS NMOS w=6.8u l=1u
+MXM3 Q QB VSS VSS NMOS w=6.8u l=1u
+MXM5 BL WL Q VSS NMOS w=5.1u l=1u
+MXM6 BLB WL QB VSS NMOS w=5.1u l=1u
+.ends
+
