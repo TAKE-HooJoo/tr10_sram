@@ -147,10 +147,6 @@ N 280 -2210 310 -2210 {lab=WL4}
 N 280 -2160 310 -2160 {lab=WL5}
 N 280 -2110 310 -2110 {lab=WL6}
 N 280 -2060 310 -2060 {lab=WL7}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -480 0 0 {name=x1}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -480 0 0 {name=x2}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -280 0 0 {name=x3}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -280 0 0 {name=x4}
 C {devices/lab_pin.sym} 370 -470 1 1 {name=p1 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 780 -470 1 1 {name=p2 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 370 -270 1 1 {name=p3 sig_type=std_logic lab=VDD}
@@ -181,10 +177,6 @@ C {devices/lab_pin.sym} 720 -2400 0 1 {name=p29 sig_type=std_logic lab=BL1}
 C {devices/lab_pin.sym} 720 -2350 0 1 {name=p30 sig_type=std_logic lab=BLB1}
 C {devices/ipin.sym} 280 -2400 0 0 {name=p17 lab=WL0}
 C {devices/ipin.sym} 280 -2350 0 0 {name=p18 lab=WL1}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -940 0 0 {name=x5}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -940 0 0 {name=x6}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -740 0 0 {name=x7}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -740 0 0 {name=x8}
 C {devices/lab_pin.sym} 370 -930 1 1 {name=p31 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 780 -930 1 1 {name=p32 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 370 -730 1 1 {name=p33 sig_type=std_logic lab=VDD}
@@ -199,10 +191,6 @@ C {devices/lab_pin.sym} 360 -880 1 1 {name=p41 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 770 -880 1 1 {name=p42 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 360 -680 1 1 {name=p43 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 770 -680 1 1 {name=p44 sig_type=std_logic lab=VSS}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -1390 0 0 {name=x9}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -1390 0 0 {name=x10}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -1190 0 0 {name=x11}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -1190 0 0 {name=x12}
 C {devices/lab_pin.sym} 370 -1380 1 1 {name=p45 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 780 -1380 1 1 {name=p46 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 370 -1180 1 1 {name=p47 sig_type=std_logic lab=VDD}
@@ -217,10 +205,6 @@ C {devices/lab_pin.sym} 360 -1330 1 1 {name=p55 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 770 -1330 1 1 {name=p56 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 360 -1130 1 1 {name=p57 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 770 -1130 1 1 {name=p58 sig_type=std_logic lab=VSS}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -1850 0 0 {name=x13}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -1850 0 0 {name=x14}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -1650 0 0 {name=x15}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -1650 0 0 {name=x16}
 C {devices/lab_pin.sym} 370 -1840 1 1 {name=p59 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 780 -1840 1 1 {name=p60 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 370 -1640 1 1 {name=p61 sig_type=std_logic lab=VDD}
@@ -247,3 +231,19 @@ C {devices/lab_pin.sym} 310 -2110 0 1 {name=p137 sig_type=std_logic lab=WL6}
 C {devices/lab_pin.sym} 310 -2060 0 1 {name=p138 sig_type=std_logic lab=WL7}
 C {devices/ipin.sym} 280 -2110 0 0 {name=p139 lab=WL6}
 C {devices/ipin.sym} 280 -2060 0 0 {name=p140 lab=WL7}
+C {sram6t_tr10.sym} 200 -280 0 0 {name=x17}
+C {sram6t_tr10.sym} 610 -280 0 0 {name=x3}
+C {sram6t_tr10.sym} 200 -480 0 0 {name=x1}
+C {sram6t_tr10.sym} 610 -480 0 0 {name=x2}
+C {sram6t_tr10.sym} 200 -740 0 0 {name=x6}
+C {sram6t_tr10.sym} 610 -740 0 0 {name=x7}
+C {sram6t_tr10.sym} 200 -940 0 0 {name=x8}
+C {sram6t_tr10.sym} 610 -940 0 0 {name=x18}
+C {sram6t_tr10.sym} 200 -1190 0 0 {name=x9}
+C {sram6t_tr10.sym} 610 -1190 0 0 {name=x10}
+C {sram6t_tr10.sym} 200 -1390 0 0 {name=x11}
+C {sram6t_tr10.sym} 610 -1390 0 0 {name=x12}
+C {sram6t_tr10.sym} 200 -1650 0 0 {name=x13}
+C {sram6t_tr10.sym} 610 -1650 0 0 {name=x14}
+C {sram6t_tr10.sym} 200 -1850 0 0 {name=x15}
+C {sram6t_tr10.sym} 610 -1850 0 0 {name=x16}

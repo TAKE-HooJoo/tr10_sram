@@ -45,10 +45,6 @@ N 520 -740 550 -740 {lab=BL0}
 N 520 -690 550 -690 {lab=BLB0}
 N 730 -740 760 -740 {lab=BL1}
 N 730 -690 760 -690 {lab=BLB1}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -480 0 0 {name=x1}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -480 0 0 {name=x2}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 200 -280 0 0 {name=x3}
-C {/home/take/Design/tr10_sram/cell/sram6t_tr10.sym} 610 -280 0 0 {name=x4}
 C {devices/lab_pin.sym} 370 -470 1 1 {name=p1 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 780 -470 1 1 {name=p2 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 370 -270 1 1 {name=p3 sig_type=std_logic lab=VDD}
@@ -79,3 +75,7 @@ C {devices/lab_pin.sym} 730 -740 0 0 {name=p29 sig_type=std_logic lab=BL1}
 C {devices/lab_pin.sym} 730 -690 0 0 {name=p30 sig_type=std_logic lab=BLB1}
 C {devices/ipin.sym} 350 -740 0 1 {name=p17 lab=WL0}
 C {devices/ipin.sym} 350 -690 0 1 {name=p18 lab=WL1}
+C {sram6t_tr10.sym} 200 -480 0 0 {name=x1}
+C {sram6t_tr10.sym} 610 -480 0 0 {name=x2}
+C {sram6t_tr10.sym} 200 -280 0 0 {name=x3}
+C {sram6t_tr10.sym} 610 -280 0 0 {name=x4}
