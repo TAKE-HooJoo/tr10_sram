@@ -5,46 +5,65 @@
 * pin A0
 * pin DIN0
 * pin DIN1
+* pin DIN10
+* pin DIN11
+* pin DIN12
+* pin DIN13
+* pin DIN14
+* pin DIN15
 * pin DIN2
 * pin DIN3
 * pin DIN4
 * pin DIN5
 * pin DIN6
 * pin DIN7
+* pin DIN8
+* pin DIN9
 * pin DOUT0
-* pin DOUT7
+* pin DOUT15
 * pin PCB
 * pin VDD
 * pin VSS
 * pin WE
 * pin WLE
-.SUBCKT sram_2w8b_top A0 DIN0 DIN1 DIN2 DIN3 DIN4 DIN5 DIN6 DIN7 DOUT0 DOUT7
-+ PCB VDD VSS WE WLE
-* cell instance $2 r0 *1 270.2,81.7
-X$2 VDD \$45 DOUT0 \$58 DOUT7 VSS read_buffer
+.SUBCKT sram_2w8b_top A0 DIN0 DIN1 DIN10 DIN11 DIN12 DIN13 DIN14 DIN15 DIN2
++ DIN3 DIN4 DIN5 DIN6 DIN7 DIN8 DIN9 DOUT0 DOUT15 PCB VDD VSS WE WLE
+* cell instance $2 r0 *1 561.2,81.7
+X$2 VDD \$71 DOUT0 \$100 DOUT15 VSS read_buffer
 * cell instance $4 r0 *1 -118.1,171.7
-X$4 A0 \$72 \$73 VDD WLE VSS decoder
-* cell instance $5 r0 *1 383.1,-9994.1
-X$5 VDD \$44 \$47 \$73 \$49 \$72 \$59 \$51 \$48 \$52 \$50 \$46 \$57 \$56 \$53
-+ \$45 \$54 \$55 \$58 VSS sram_2w8b
-* cell instance $6 r0 *1 277.4,187.9
-X$6 VDD \$45 \$44 \$59 \$58 PCB \$74 VSS precharge
-* cell instance $9 r0 *1 126.1,94.6
-X$9 VDD DIN4 DIN5 \$22 \$52 \$55 \$53 \$54 WE VSS write_driver
+X$4 A0 \$122 \$121 VDD WLE VSS decoder
+* cell instance $5 r0 *1 568.4,187.9
+X$5 VDD \$71 \$70 \$101 \$100 PCB \$130 VSS precharge
+* cell instance $8 r0 *1 383.1,-9994.1
+X$8 VDD \$70 \$73 \$121 \$75 \$122 \$85 \$77 \$74 \$78 \$76 \$72 \$83 \$82 \$79
++ \$71 \$80 \$81 \$84 VSS sram_2w8b
+* cell instance $9 r0 *1 668.7,-9994.1
+X$9 VDD \$86 \$89 \$121 \$91 \$122 \$101 \$93 \$90 \$94 \$92 \$88 \$99 \$98
++ \$95 \$87 \$96 \$97 \$100 VSS sram_2w8b
 * cell instance $10 r0 *1 54.7,94.6
-X$10 VDD DIN2 DIN3 \$22 \$48 \$51 \$49 \$50 WE VSS write_driver
-* cell instance $11 r0 *1 197.5,94.6
-X$11 VDD DIN6 DIN7 \$22 \$56 \$59 \$57 \$58 WE VSS write_driver
-* cell instance $53 r0 *1 -16.7,94.6
-X$53 VDD DIN0 DIN1 \$22 \$44 \$47 \$45 \$46 WE VSS write_driver
+X$10 VDD DIN2 DIN3 \$34 \$74 \$77 \$75 \$76 WE VSS write_driver
+* cell instance $11 r0 *1 126.1,94.6
+X$11 VDD DIN4 DIN5 \$34 \$78 \$81 \$79 \$80 WE VSS write_driver
+* cell instance $12 r0 *1 197.5,94.6
+X$12 VDD DIN6 DIN7 \$34 \$82 \$85 \$83 \$84 WE VSS write_driver
+* cell instance $13 r0 *1 268.9,94.6
+X$13 VDD DIN8 DIN9 \$34 \$86 \$89 \$87 \$88 WE VSS write_driver
+* cell instance $14 r0 *1 483.1,94.6
+X$14 VDD DIN14 DIN15 \$34 \$98 \$101 \$99 \$100 WE VSS write_driver
+* cell instance $15 r0 *1 340.3,94.6
+X$15 VDD DIN10 DIN11 \$34 \$90 \$93 \$91 \$92 WE VSS write_driver
+* cell instance $16 r0 *1 411.7,94.6
+X$16 VDD DIN12 DIN13 \$34 \$94 \$97 \$95 \$96 WE VSS write_driver
+* cell instance $107 r0 *1 -16.7,94.6
+X$107 VDD DIN0 DIN1 \$34 \$70 \$73 \$71 \$72 WE VSS write_driver
 * device instance $1 r0 *1 -71.9,98.9 PMOS
-XM$1 VDD WE \$22 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
-* device instance $2 r180 *1 298.6,207 PMOS
-XM$2 VDD PCB \$74 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+XM$1 VDD WE \$34 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r180 *1 589.6,207 PMOS
+XM$2 VDD PCB \$130 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
 * device instance $3 r0 *1 -71.9,76.8 NMOS
-XM$3 VSS WE \$22 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
-* device instance $4 r180 *1 298.6,229.1 NMOS
-XM$4 VSS PCB \$74 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+XM$3 VSS WE \$34 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $4 r180 *1 589.6,229.1 NMOS
+XM$4 VSS PCB \$130 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
 .ENDS sram_2w8b_top
 
 * cell read_buffer
