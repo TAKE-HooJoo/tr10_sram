@@ -1,0 +1,51 @@
+** sch_path: /home/take/Design/tr10_sram/sram/sram_16w2b.sch
+.subckt sram_16w2b BL0 VDD WL0 WL8 BL1 VSS WL1 BLB1 WL9 BLB0 WL2 WL10 WL3 WL11 WL4 WL12 WL5 WL13 WL6 WL14 WL15 WL7
+*.PININFO VDD:B BL0:B BLB0:B BL1:B BLB1:B WL0:I WL1:I WL2:I WL3:I WL4:I WL5:I WL6:I WL7:I VSS:B WL8:I WL9:I WL10:I WL11:I WL12:I
+*+ WL13:I WL14:I WL15:I
+x17 BL0 BLB0 WL0 VDD VSS sram6t_tr10
+x3 BL1 BLB1 WL0 VDD VSS sram6t_tr10
+x1 BL0 BLB0 WL1 VDD VSS sram6t_tr10
+x2 BL1 BLB1 WL1 VDD VSS sram6t_tr10
+x6 BL0 BLB0 WL2 VDD VSS sram6t_tr10
+x7 BL1 BLB1 WL2 VDD VSS sram6t_tr10
+x8 BL0 BLB0 WL3 VDD VSS sram6t_tr10
+x18 BL1 BLB1 WL3 VDD VSS sram6t_tr10
+x9 BL0 BLB0 WL4 VDD VSS sram6t_tr10
+x10 BL1 BLB1 WL4 VDD VSS sram6t_tr10
+x11 BL0 BLB0 WL5 VDD VSS sram6t_tr10
+x12 BL1 BLB1 WL5 VDD VSS sram6t_tr10
+x13 BL0 BLB0 WL6 VDD VSS sram6t_tr10
+x14 BL1 BLB1 WL6 VDD VSS sram6t_tr10
+x15 BL0 BLB0 WL7 VDD VSS sram6t_tr10
+x16 BL1 BLB1 WL7 VDD VSS sram6t_tr10
+x4 BL0 BLB0 WL8 VDD VSS sram6t_tr10
+x5 BL1 BLB1 WL8 VDD VSS sram6t_tr10
+x19 BL0 BLB0 WL9 VDD VSS sram6t_tr10
+x20 BL1 BLB1 WL9 VDD VSS sram6t_tr10
+x21 BL0 BLB0 WL10 VDD VSS sram6t_tr10
+x22 BL1 BLB1 WL10 VDD VSS sram6t_tr10
+x23 BL0 BLB0 WL11 VDD VSS sram6t_tr10
+x24 BL1 BLB1 WL11 VDD VSS sram6t_tr10
+x25 BL0 BLB0 WL12 VDD VSS sram6t_tr10
+x26 BL1 BLB1 WL12 VDD VSS sram6t_tr10
+x27 BL0 BLB0 WL13 VDD VSS sram6t_tr10
+x28 BL1 BLB1 WL13 VDD VSS sram6t_tr10
+x29 BL0 BLB0 WL14 VDD VSS sram6t_tr10
+x30 BL1 BLB1 WL14 VDD VSS sram6t_tr10
+x31 BL0 BLB0 WL15 VDD VSS sram6t_tr10
+x32 BL1 BLB1 WL15 VDD VSS sram6t_tr10
+.ends
+
+* expanding   symbol:  sram6t_tr10.sym # of pins=5
+** sym_path: /home/take/Design/tr10_sram/sram/sram6t_tr10.sym
+** sch_path: /home/take/Design/tr10_sram/sram/sram6t_tr10.sch
+.subckt sram6t_tr10 BL BLB WL VDD VSS
+*.PININFO BL:B BLB:B WL:I VDD:B VSS:B
+MXM1 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM2 net2 net1 VDD VDD PMOS w=3.4u l=1u
+MXM4 net2 net1 VSS VSS NMOS w=6.8u l=1u
+MXM3 net1 net2 VSS VSS NMOS w=6.8u l=1u
+MXM5 BL WL net1 VSS NMOS w=5.1u l=1u
+MXM6 BLB WL net2 VSS NMOS w=5.1u l=1u
+.ends
+

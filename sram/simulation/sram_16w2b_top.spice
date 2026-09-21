@@ -1,0 +1,143 @@
+** sch_path: /home/take/Design/tr10_sram/sram/sram_16w2b_top.sch
+.subckt sram_16w2b_top VDD WLE DOUT0 VSS A0 WE DIN0 DIN1 PCB DOUT1
+*.PININFO VDD:B WLE:I DOUT0:O VSS:B A0:I WE:I DIN0:I DIN1:I PCB:I DOUT1:O
+x2 VDD VSS WL0 WLE A0 net1 decoder
+x3 DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB write_driver
+x4 VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1 precharge
+x5 VDD VSS BLB0 BLB1 DOUT0 DOUT1 read_buffer
+MXM1 WEB WE VSS VSS NMOS w=3.4u l=1u
+MXM2 WEB WE VDD VDD PMOS w=6.8u l=1u
+MXM3 EQEN PCB VSS VSS NMOS w=3.4u l=1u
+MXM4 EQEN PCB VDD VDD PMOS w=6.8u l=1u
+x1 BL0 VDD WL0 VSS BL1 VSS VSS BLB1 VSS BLB0 VSS VSS VSS VSS VSS VSS VSS VSS VSS VSS WL15 VSS sram_16w2b
+x6 VDD VSS net2 WLE A0 net3 decoder
+x7 VDD VSS net4 WLE A0 net5 decoder
+x8 VDD VSS net6 WLE A0 net7 decoder
+x9 VDD VSS net8 WLE A0 net9 decoder
+x10 VDD VSS net10 WLE A0 net11 decoder
+x11 VDD VSS net12 WLE A0 net13 decoder
+x12 VDD VSS net14 WLE A0 WL15 decoder
+.ends
+
+* expanding   symbol:  decoder.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/sram/decoder.sym
+** sch_path: /home/take/Design/tr10_sram/sram/decoder.sch
+.subckt decoder VDD VSS WL0 WLE A0 WL1
+*.PININFO VDD:B VSS:B WLE:I WL0:O WL1:O A0:I
+MXM7 A0B A0 VDD VDD PMOS w=6.8u l=1u
+MXM8 A0B A0 VSS VSS NMOS w=3.4u l=1u
+MXM9 net2 WLE VDD VDD PMOS w=6.8u l=1u
+MXM10 net1 WLE VSS VSS NMOS w=6.8u l=1u
+MXM11 net2 A0B net1 VSS NMOS w=6.8u l=1u
+MXM12 net2 A0B VDD VDD PMOS w=6.8u l=1u
+MXM13 WL0 net2 VDD VDD PMOS w=6.8u l=1u
+MXM14 WL0 net2 VSS VSS NMOS w=3.4u l=1u
+MXM15 net4 WLE VDD VDD PMOS w=6.8u l=1u
+MXM16 net3 WLE VSS VSS NMOS w=6.8u l=1u
+MXM17 net4 A0 net3 VSS NMOS w=6.8u l=1u
+MXM18 net4 A0 VDD VDD PMOS w=6.8u l=1u
+MXM19 WL1 net4 VDD VDD PMOS w=6.8u l=1u
+MXM20 WL1 net4 VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  write_driver.sym # of pins=10
+** sym_path: /home/take/Design/tr10_sram/sram/write_driver.sym
+** sch_path: /home/take/Design/tr10_sram/sram/write_driver.sch
+.subckt write_driver DIN0 VDD BL0 BLB0 VSS DIN1 BL1 WE BLB1 WEB
+*.PININFO DIN0:I DIN1:I WE:I WEB:I BL0:B BLB0:B BL1:B BLB1:B VDD:B VSS:B
+MXM15 DIN0B DIN0 VDD VDD PMOS w=6.8u l=1u
+MXM16 DIN0B DIN0 VSS VSS NMOS w=3.4u l=1u
+MXM7 BL0 WE DIN0 VSS NMOS w=5.2u l=1u
+MXM8 DIN0 WEB BL0 VDD PMOS w=6.8u l=1u
+MXM1 BLB0 WE DIN0B VSS NMOS w=5.2u l=1u
+MXM2 DIN0B WEB BLB0 VDD PMOS w=6.8u l=1u
+MXM3 DIN1B DIN1 VDD VDD PMOS w=6.8u l=1u
+MXM4 DIN1B DIN1 VSS VSS NMOS w=3.4u l=1u
+MXM5 BL1 WE DIN1 VSS NMOS w=5.2u l=1u
+MXM6 DIN1 WEB BL1 VDD PMOS w=6.8u l=1u
+MXM9 BLB1 WE DIN1B VSS NMOS w=5.2u l=1u
+MXM10 DIN1B WEB BLB1 VDD PMOS w=6.8u l=1u
+.ends
+
+
+* expanding   symbol:  precharge.sym # of pins=8
+** sym_path: /home/take/Design/tr10_sram/sram/precharge.sym
+** sch_path: /home/take/Design/tr10_sram/sram/precharge.sch
+.subckt precharge VDD VSS PCB EQEN BL0 BLB0 BL1 BLB1
+*.PININFO VDD:B VSS:B PCB:I EQEN:I BL0:B BLB0:B BL1:B BLB1:B
+MXM9 BL0 PCB VDD VDD PMOS w=3.4u l=1u
+MXM10 BLB0 PCB VDD VDD PMOS w=3.4u l=1u
+MXM11 BL0 EQEN BLB0 VSS NMOS w=3.4u l=1u
+MXM12 BL1 PCB VDD VDD PMOS w=3.4u l=1u
+MXM13 BLB1 PCB VDD VDD PMOS w=3.4u l=1u
+MXM14 BL1 EQEN BLB1 VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  read_buffer.sym # of pins=6
+** sym_path: /home/take/Design/tr10_sram/sram/read_buffer.sym
+** sch_path: /home/take/Design/tr10_sram/sram/read_buffer.sch
+.subckt read_buffer VDD VSS BLB0 BLB1 DOUT0 DOUT1
+*.PININFO VDD:B VSS:B BLB0:I BLB1:I DOUT0:O DOUT1:O
+MXM15 DOUT0 BLB0 VDD VDD PMOS w=6.8u l=1u
+MXM16 DOUT0 BLB0 VSS VSS NMOS w=3.4u l=1u
+MXM1 DOUT1 BLB1 VDD VDD PMOS w=6.8u l=1u
+MXM2 DOUT1 BLB1 VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  sram_16w2b.sym # of pins=22
+** sym_path: /home/take/Design/tr10_sram/sram/sram_16w2b.sym
+** sch_path: /home/take/Design/tr10_sram/sram/sram_16w2b.sch
+.subckt sram_16w2b BL0 VDD WL0 WL8 BL1 VSS WL1 BLB1 WL9 BLB0 WL2 WL10 WL3 WL11 WL4 WL12 WL5 WL13 WL6 WL14 WL15 WL7
+*.PININFO VDD:B BL0:B BLB0:B BL1:B BLB1:B WL0:I WL1:I WL2:I WL3:I WL4:I WL5:I WL6:I WL7:I VSS:B WL8:I WL9:I WL10:I WL11:I WL12:I
+*+ WL13:I WL14:I WL15:I
+x17 BL0 BLB0 WL0 VDD VSS sram6t_tr10
+x3 BL1 BLB1 WL0 VDD VSS sram6t_tr10
+x1 BL0 BLB0 WL1 VDD VSS sram6t_tr10
+x2 BL1 BLB1 WL1 VDD VSS sram6t_tr10
+x6 BL0 BLB0 WL2 VDD VSS sram6t_tr10
+x7 BL1 BLB1 WL2 VDD VSS sram6t_tr10
+x8 BL0 BLB0 WL3 VDD VSS sram6t_tr10
+x18 BL1 BLB1 WL3 VDD VSS sram6t_tr10
+x9 BL0 BLB0 WL4 VDD VSS sram6t_tr10
+x10 BL1 BLB1 WL4 VDD VSS sram6t_tr10
+x11 BL0 BLB0 WL5 VDD VSS sram6t_tr10
+x12 BL1 BLB1 WL5 VDD VSS sram6t_tr10
+x13 BL0 BLB0 WL6 VDD VSS sram6t_tr10
+x14 BL1 BLB1 WL6 VDD VSS sram6t_tr10
+x15 BL0 BLB0 WL7 VDD VSS sram6t_tr10
+x16 BL1 BLB1 WL7 VDD VSS sram6t_tr10
+x4 BL0 BLB0 WL8 VDD VSS sram6t_tr10
+x5 BL1 BLB1 WL8 VDD VSS sram6t_tr10
+x19 BL0 BLB0 WL9 VDD VSS sram6t_tr10
+x20 BL1 BLB1 WL9 VDD VSS sram6t_tr10
+x21 BL0 BLB0 WL10 VDD VSS sram6t_tr10
+x22 BL1 BLB1 WL10 VDD VSS sram6t_tr10
+x23 BL0 BLB0 WL11 VDD VSS sram6t_tr10
+x24 BL1 BLB1 WL11 VDD VSS sram6t_tr10
+x25 BL0 BLB0 WL12 VDD VSS sram6t_tr10
+x26 BL1 BLB1 WL12 VDD VSS sram6t_tr10
+x27 BL0 BLB0 WL13 VDD VSS sram6t_tr10
+x28 BL1 BLB1 WL13 VDD VSS sram6t_tr10
+x29 BL0 BLB0 WL14 VDD VSS sram6t_tr10
+x30 BL1 BLB1 WL14 VDD VSS sram6t_tr10
+x31 BL0 BLB0 WL15 VDD VSS sram6t_tr10
+x32 BL1 BLB1 WL15 VDD VSS sram6t_tr10
+.ends
+
+
+* expanding   symbol:  sram6t_tr10.sym # of pins=5
+** sym_path: /home/take/Design/tr10_sram/sram/sram6t_tr10.sym
+** sch_path: /home/take/Design/tr10_sram/sram/sram6t_tr10.sch
+.subckt sram6t_tr10 BL BLB WL VDD VSS
+*.PININFO BL:B BLB:B WL:I VDD:B VSS:B
+MXM1 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM2 net2 net1 VDD VDD PMOS w=3.4u l=1u
+MXM4 net2 net1 VSS VSS NMOS w=6.8u l=1u
+MXM3 net1 net2 VSS VSS NMOS w=6.8u l=1u
+MXM5 BL WL net1 VSS NMOS w=5.1u l=1u
+MXM6 BLB WL net2 VSS NMOS w=5.1u l=1u
+.ends
+

@@ -15,12 +15,11 @@ N 160 -1280 160 -1230 {lab=0}
 N 160 -1390 160 -1340 {lab=WE}
 N 160 -1620 160 -1590 {lab=PCB}
 N 160 -1530 160 -1480 {lab=0}
-N 120 -530 170 -530 {lab=WLE}
-N 120 -510 170 -510 {lab=A0}
-N 470 -530 500 -530 {lab=VDD}
-N 470 -510 500 -510 {lab=VSS}
-N 470 -490 500 -490 {lab=WL0}
-N 470 -470 500 -470 {lab=WL15}
+N 100 -150 150 -150 {lab=WLE}
+N 100 -130 150 -130 {lab=A0}
+N 450 -150 480 -150 {lab=VDD}
+N 450 -130 480 -130 {lab=VSS}
+N 450 -110 480 -110 {lab=WL0}
 N 150 -750 150 -700 {lab=0}
 N 150 -860 150 -810 {lab=WLE}
 N 370 -750 370 -700 {lab=0}
@@ -79,28 +78,57 @@ N 1220 -1390 1260 -1390 {lab=PCB}
 N 1320 -1430 1340 -1430 {lab=VDD}
 N 1340 -1470 1340 -1430 {lab=VDD}
 N 1320 -1470 1340 -1470 {lab=VDD}
-N 130 -350 150 -350 {lab=WL0}
-N 130 -70 150 -70 {lab=WL15}
-N 450 -350 470 -350 {lab=BL0}
-N 450 -310 470 -310 {lab=BL1}
-N 450 -330 470 -330 {lab=VDD}
-N 450 -290 470 -290 {lab=VSS}
-N 450 -250 470 -250 {lab=BLB0}
-N 450 -270 470 -270 {lab=BLB1}
-N 130 -330 150 -330 {lab=VSS}
-N 130 -310 150 -310 {lab=VSS}
-N 130 -290 150 -290 {lab=VSS}
-N 130 -270 150 -270 {lab=VSS}
-N 130 -250 150 -250 {lab=VSS}
-N 130 -230 150 -230 {lab=VSS}
-N 130 -210 150 -210 {lab=VSS}
-N 130 -190 150 -190 {lab=VSS}
-N 130 -170 150 -170 {lab=VSS}
-N 130 -150 150 -150 {lab=VSS}
-N 130 -130 150 -130 {lab=VSS}
-N 130 -110 150 -110 {lab=VSS}
-N 130 -90 150 -90 {lab=VSS}
-N 130 -50 150 -50 {lab=VSS}
+N 130 -580 150 -580 {lab=WL0}
+N 130 -300 150 -300 {lab=WL15}
+N 450 -580 470 -580 {lab=BL0}
+N 450 -540 470 -540 {lab=BL1}
+N 450 -560 470 -560 {lab=VDD}
+N 450 -520 470 -520 {lab=VSS}
+N 450 -480 470 -480 {lab=BLB0}
+N 450 -500 470 -500 {lab=BLB1}
+N 130 -560 150 -560 {lab=VSS}
+N 130 -540 150 -540 {lab=VSS}
+N 130 -520 150 -520 {lab=VSS}
+N 130 -500 150 -500 {lab=VSS}
+N 130 -480 150 -480 {lab=VSS}
+N 130 -460 150 -460 {lab=VSS}
+N 130 -440 150 -440 {lab=VSS}
+N 130 -420 150 -420 {lab=VSS}
+N 130 -400 150 -400 {lab=VSS}
+N 130 -380 150 -380 {lab=VSS}
+N 130 -360 150 -360 {lab=VSS}
+N 130 -340 150 -340 {lab=VSS}
+N 130 -320 150 -320 {lab=VSS}
+N 130 -280 150 -280 {lab=VSS}
+N 100 -20 150 -20 {lab=WLE}
+N 100 0 150 0 {lab=A0}
+N 450 -20 480 -20 {lab=VDD}
+N 100 140 150 140 {lab=WLE}
+N 100 160 150 160 {lab=A0}
+N 450 140 480 140 {lab=VDD}
+N 450 160 480 160 {lab=VSS}
+N 100 310 150 310 {lab=WLE}
+N 100 330 150 330 {lab=A0}
+N 450 310 480 310 {lab=VDD}
+N 450 330 480 330 {lab=VSS}
+N 100 490 150 490 {lab=WLE}
+N 100 510 150 510 {lab=A0}
+N 450 490 480 490 {lab=VDD}
+N 450 510 480 510 {lab=VSS}
+N 110 670 160 670 {lab=WLE}
+N 110 690 160 690 {lab=A0}
+N 460 670 490 670 {lab=VDD}
+N 460 690 490 690 {lab=VSS}
+N 110 820 160 820 {lab=WLE}
+N 110 840 160 840 {lab=A0}
+N 460 820 490 820 {lab=VDD}
+N 460 840 490 840 {lab=VSS}
+N 110 980 160 980 {lab=WLE}
+N 110 1000 160 1000 {lab=A0}
+N 460 980 490 980 {lab=VDD}
+N 460 1000 490 1000 {lab=VSS}
+N 460 1040 490 1040 {lab=WL15}
+N 450 -0 480 -0 {lab=VSS}
 C {devices/vsource.sym} 690 -400 0 0 {name=VVDD value=5 savecurrent=false}
 C {devices/gnd.sym} 690 -320 0 0 {name=l4 lab=0}
 C {devices/lab_pin.sym} 690 -480 0 0 {name=p6 sig_type=std_logic lab=VDD}
@@ -159,13 +187,12 @@ plot v(bl1) v(blb1)
 C {devices/vsource.sym} 160 -1560 0 0 {name=VPCB value="PWL(0 5 34.9n 5 35n 0 39.9n 0 40n 5 59.9n 5 60n 0 64.9n 0 65n 5 100n 5)" savecurrent=false}
 C {devices/lab_pin.sym} 160 -1620 0 0 {name=p65 sig_type=std_logic lab=PCB}
 C {devices/gnd.sym} 160 -1480 0 0 {name=l13 lab=0}
-C {decoder.sym} 320 -500 0 0 {name=x2}
-C {devices/lab_pin.sym} 120 -530 0 0 {name=p4 sig_type=std_logic lab=WLE}
-C {devices/lab_pin.sym} 120 -510 0 0 {name=p5 sig_type=std_logic lab=A0}
-C {devices/lab_pin.sym} 500 -530 0 1 {name=p67 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 500 -510 0 1 {name=p68 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 500 -490 0 1 {name=p69 sig_type=std_logic lab=WL0}
-C {devices/lab_pin.sym} 500 -470 0 1 {name=p70 sig_type=std_logic lab=WL15}
+C {decoder.sym} 300 -120 0 0 {name=x2}
+C {devices/lab_pin.sym} 100 -150 0 0 {name=p4 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 100 -130 0 0 {name=p5 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 480 -150 0 1 {name=p67 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 480 -130 0 1 {name=p68 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 480 -110 0 1 {name=p69 sig_type=std_logic lab=WL0}
 C {devices/vsource.sym} 150 -780 0 0 {name=VWLE value="PWL(0 0 4.9n 0 5n 5 14.9n 5 15n 0 19.9n 0 20n 5 29.9n 5 30n 0 44.9n 0 45n 5 54.9n 5 55n 0 69.9n 0 70n 5 79.9n 5 80n 0 100n 0)" savecurrent=false}
 C {devices/gnd.sym} 150 -700 0 0 {name=l2 lab=0
 value=1}
@@ -260,26 +287,62 @@ ps=0
 pd=0
 nrd=0
 nrs=0}
-C {devices/lab_pin.sym} 130 -350 0 0 {name=p37 sig_type=std_logic lab=WL0}
-C {devices/lab_pin.sym} 130 -70 0 0 {name=p38 sig_type=std_logic lab=WL15}
-C {devices/lab_pin.sym} 470 -350 0 1 {name=p42 sig_type=std_logic lab=BL0}
-C {devices/lab_pin.sym} 470 -310 0 1 {name=p44 sig_type=std_logic lab=BL1}
-C {devices/lab_pin.sym} 470 -330 0 1 {name=p50 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 470 -290 0 1 {name=p51 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 470 -250 0 1 {name=p52 sig_type=std_logic lab=BLB0}
-C {devices/lab_pin.sym} 470 -270 0 1 {name=p53 sig_type=std_logic lab=BLB1}
-C {devices/lab_pin.sym} 130 -330 0 0 {name=p58 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -310 0 0 {name=p59 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -290 0 0 {name=p54 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -270 0 0 {name=p55 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -250 0 0 {name=p56 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -230 0 0 {name=p57 sig_type=std_logic lab=VSS}
-C {sram_16w2b.sym} 300 -200 0 0 {name=x1}
-C {devices/lab_pin.sym} 130 -210 0 0 {name=p1 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -190 0 0 {name=p2 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -170 0 0 {name=p3 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -150 0 0 {name=p7 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -130 0 0 {name=p8 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -110 0 0 {name=p9 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -90 0 0 {name=p10 sig_type=std_logic lab=VSS}
-C {devices/lab_pin.sym} 130 -50 0 0 {name=p39 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -580 0 0 {name=p37 sig_type=std_logic lab=WL0}
+C {devices/lab_pin.sym} 130 -300 0 0 {name=p38 sig_type=std_logic lab=WL15}
+C {devices/lab_pin.sym} 470 -580 0 1 {name=p42 sig_type=std_logic lab=BL0}
+C {devices/lab_pin.sym} 470 -540 0 1 {name=p44 sig_type=std_logic lab=BL1}
+C {devices/lab_pin.sym} 470 -560 0 1 {name=p50 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 470 -520 0 1 {name=p51 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 470 -480 0 1 {name=p52 sig_type=std_logic lab=BLB0}
+C {devices/lab_pin.sym} 470 -500 0 1 {name=p53 sig_type=std_logic lab=BLB1}
+C {devices/lab_pin.sym} 130 -560 0 0 {name=p58 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -540 0 0 {name=p59 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -520 0 0 {name=p54 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -500 0 0 {name=p55 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -480 0 0 {name=p56 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -460 0 0 {name=p57 sig_type=std_logic lab=VSS}
+C {sram_16w2b.sym} 300 -430 0 0 {name=x1}
+C {devices/lab_pin.sym} 130 -440 0 0 {name=p1 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -420 0 0 {name=p2 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -400 0 0 {name=p3 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -380 0 0 {name=p7 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -360 0 0 {name=p8 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -340 0 0 {name=p9 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -320 0 0 {name=p10 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 130 -280 0 0 {name=p39 sig_type=std_logic lab=VSS}
+C {decoder.sym} 300 10 0 0 {name=x6}
+C {devices/lab_pin.sym} 100 -20 0 0 {name=p60 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 100 0 0 0 {name=p61 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 480 -20 0 1 {name=p62 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 480 0 0 1 {name=p66 sig_type=std_logic lab=VSS}
+C {decoder.sym} 300 170 0 0 {name=x7}
+C {devices/lab_pin.sym} 100 140 0 0 {name=p75 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 100 160 0 0 {name=p76 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 480 140 0 1 {name=p77 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 480 160 0 1 {name=p78 sig_type=std_logic lab=VSS}
+C {decoder.sym} 300 340 0 0 {name=x8}
+C {devices/lab_pin.sym} 100 310 0 0 {name=p81 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 100 330 0 0 {name=p82 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 480 310 0 1 {name=p83 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 480 330 0 1 {name=p84 sig_type=std_logic lab=VSS}
+C {decoder.sym} 300 520 0 0 {name=x9}
+C {devices/lab_pin.sym} 100 490 0 0 {name=p87 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 100 510 0 0 {name=p88 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 480 490 0 1 {name=p89 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 480 510 0 1 {name=p90 sig_type=std_logic lab=VSS}
+C {decoder.sym} 310 700 0 0 {name=x10}
+C {devices/lab_pin.sym} 110 670 0 0 {name=p93 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 110 690 0 0 {name=p94 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 490 670 0 1 {name=p95 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 490 690 0 1 {name=p96 sig_type=std_logic lab=VSS}
+C {decoder.sym} 310 850 0 0 {name=x11}
+C {devices/lab_pin.sym} 110 820 0 0 {name=p99 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 110 840 0 0 {name=p100 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 490 820 0 1 {name=p101 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 490 840 0 1 {name=p102 sig_type=std_logic lab=VSS}
+C {decoder.sym} 310 1010 0 0 {name=x12}
+C {devices/lab_pin.sym} 110 980 0 0 {name=p105 sig_type=std_logic lab=WLE}
+C {devices/lab_pin.sym} 110 1000 0 0 {name=p106 sig_type=std_logic lab=A0}
+C {devices/lab_pin.sym} 490 980 0 1 {name=p107 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 490 1000 0 1 {name=p108 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 490 1040 0 1 {name=p110 sig_type=std_logic lab=WL15}
