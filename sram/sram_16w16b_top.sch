@@ -27,7 +27,6 @@ N 1150 -940 1170 -940 {lab=WLE}
 N 1150 -920 1170 -920 {lab=A0}
 N 1310 -940 1330 -940 {lab=WE}
 N 960 -780 980 -780 {lab=DIN0}
-N 960 -760 980 -760 {lab=DIN1}
 N 1100 -620 1120 -620 {lab=PCB}
 N 1270 -620 1290 -620 {lab=DOUT0}
 N 1270 -600 1290 -600 {lab=DOUT15}
@@ -173,19 +172,6 @@ N 2080 -110 2110 -110 {lab=BL15}
 N 2080 -90 2110 -90 {lab=BLB15}
 N 1730 -190 1780 -190 {lab=DIN14}
 N 1730 -170 1780 -170 {lab=DIN15}
-N 1120 -780 1140 -780 {lab=DIN2}
-N 1120 -760 1140 -760 {lab=DIN3}
-N 1290 -780 1310 -780 {lab=DIN4}
-N 1290 -760 1310 -760 {lab=DIN5}
-N 1460 -780 1480 -780 {lab=DIN6}
-N 1460 -760 1480 -760 {lab=DIN7}
-N 960 -710 980 -710 {lab=DIN8}
-N 960 -690 980 -690 {lab=DIN9}
-N 1120 -710 1140 -710 {lab=DIN10}
-N 1120 -690 1140 -690 {lab=DIN11}
-N 1290 -710 1310 -710 {lab=DIN12}
-N 1290 -690 1310 -690 {lab=DIN13}
-N 1460 -710 1480 -710 {lab=DIN14}
 N 1460 -690 1480 -690 {lab=DIN15}
 N 2350 -1260 2400 -1260 {lab=WLE}
 N 2350 -1240 2400 -1240 {lab=A0}
@@ -266,8 +252,6 @@ C {devices/ipin.sym} 1310 -940 0 0 {name=p48 lab=WE}
 C {devices/lab_pin.sym} 1330 -940 0 1 {name=p49 sig_type=std_logic lab=WE}
 C {devices/ipin.sym} 960 -780 0 0 {name=p52 lab=DIN0}
 C {devices/lab_pin.sym} 980 -780 0 1 {name=p53 sig_type=std_logic lab=DIN0}
-C {devices/ipin.sym} 960 -760 0 0 {name=p54 lab=DIN1}
-C {devices/lab_pin.sym} 980 -760 0 1 {name=p55 sig_type=std_logic lab=DIN1}
 C {devices/ipin.sym} 1100 -620 0 0 {name=p56 lab=PCB}
 C {devices/lab_pin.sym} 1120 -620 0 1 {name=p57 sig_type=std_logic lab=PCB}
 C {devices/lab_pin.sym} 1270 -620 0 0 {name=p60 sig_type=std_logic lab=DOUT0}
@@ -372,7 +356,7 @@ C {devices/lab_pin.sym} 2110 -1130 0 1 {name=p23 sig_type=std_logic lab=BLB0}
 C {devices/lab_pin.sym} 2110 -1090 0 1 {name=p58 sig_type=std_logic lab=BL1}
 C {devices/lab_pin.sym} 2110 -1070 0 1 {name=p59 sig_type=std_logic lab=BLB1}
 C {devices/lab_pin.sym} 1730 -1170 0 0 {name=p69 sig_type=std_logic lab=DIN0}
-C {devices/lab_pin.sym} 1730 -1150 0 0 {name=p70 sig_type=std_logic lab=DIN1}
+C {devices/lab_pin.sym} 1730 -1150 0 0 {name=p70 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -980 0 0 {name=x13}
 C {devices/lab_pin.sym} 2110 -1030 0 1 {name=p71 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -970 0 1 {name=p72 sig_type=std_logic lab=VSS}
@@ -382,8 +366,8 @@ C {devices/lab_pin.sym} 2110 -1010 0 1 {name=p75 sig_type=std_logic lab=BL2}
 C {devices/lab_pin.sym} 2110 -990 0 1 {name=p76 sig_type=std_logic lab=BLB2}
 C {devices/lab_pin.sym} 2110 -950 0 1 {name=p77 sig_type=std_logic lab=BL3}
 C {devices/lab_pin.sym} 2110 -930 0 1 {name=p78 sig_type=std_logic lab=BLB3}
-C {devices/lab_pin.sym} 1730 -1030 0 0 {name=p161 sig_type=std_logic lab=DIN2}
-C {devices/lab_pin.sym} 1730 -1010 0 0 {name=p162 sig_type=std_logic lab=DIN3}
+C {devices/lab_pin.sym} 1730 -1030 0 0 {name=p161 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -1010 0 0 {name=p162 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -840 0 0 {name=x14}
 C {devices/lab_pin.sym} 2110 -890 0 1 {name=p163 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -830 0 1 {name=p164 sig_type=std_logic lab=VSS}
@@ -393,8 +377,8 @@ C {devices/lab_pin.sym} 2110 -870 0 1 {name=p167 sig_type=std_logic lab=BL4}
 C {devices/lab_pin.sym} 2110 -850 0 1 {name=p168 sig_type=std_logic lab=BLB4}
 C {devices/lab_pin.sym} 2110 -810 0 1 {name=p169 sig_type=std_logic lab=BL5}
 C {devices/lab_pin.sym} 2110 -790 0 1 {name=p170 sig_type=std_logic lab=BLB5}
-C {devices/lab_pin.sym} 1730 -890 0 0 {name=p171 sig_type=std_logic lab=DIN4}
-C {devices/lab_pin.sym} 1730 -870 0 0 {name=p172 sig_type=std_logic lab=DIN5}
+C {devices/lab_pin.sym} 1730 -890 0 0 {name=p171 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -870 0 0 {name=p172 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -710 0 0 {name=x15}
 C {devices/lab_pin.sym} 2110 -760 0 1 {name=p173 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -700 0 1 {name=p174 sig_type=std_logic lab=VSS}
@@ -404,8 +388,8 @@ C {devices/lab_pin.sym} 2110 -740 0 1 {name=p177 sig_type=std_logic lab=BL6}
 C {devices/lab_pin.sym} 2110 -720 0 1 {name=p178 sig_type=std_logic lab=BLB6}
 C {devices/lab_pin.sym} 2110 -680 0 1 {name=p179 sig_type=std_logic lab=BL7}
 C {devices/lab_pin.sym} 2110 -660 0 1 {name=p180 sig_type=std_logic lab=BLB7}
-C {devices/lab_pin.sym} 1730 -760 0 0 {name=p181 sig_type=std_logic lab=DIN6}
-C {devices/lab_pin.sym} 1730 -740 0 0 {name=p182 sig_type=std_logic lab=DIN7}
+C {devices/lab_pin.sym} 1730 -760 0 0 {name=p181 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -740 0 0 {name=p182 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -550 0 0 {name=x16}
 C {devices/lab_pin.sym} 2110 -600 0 1 {name=p183 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -540 0 1 {name=p184 sig_type=std_logic lab=VSS}
@@ -415,8 +399,8 @@ C {devices/lab_pin.sym} 2110 -580 0 1 {name=p187 sig_type=std_logic lab=BL8}
 C {devices/lab_pin.sym} 2110 -560 0 1 {name=p188 sig_type=std_logic lab=BLB8}
 C {devices/lab_pin.sym} 2110 -520 0 1 {name=p189 sig_type=std_logic lab=BL9}
 C {devices/lab_pin.sym} 2110 -500 0 1 {name=p190 sig_type=std_logic lab=BLB9}
-C {devices/lab_pin.sym} 1730 -600 0 0 {name=p191 sig_type=std_logic lab=DIN8}
-C {devices/lab_pin.sym} 1730 -580 0 0 {name=p192 sig_type=std_logic lab=DIN9}
+C {devices/lab_pin.sym} 1730 -600 0 0 {name=p191 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -580 0 0 {name=p192 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -410 0 0 {name=x17}
 C {devices/lab_pin.sym} 2110 -460 0 1 {name=p193 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -400 0 1 {name=p194 sig_type=std_logic lab=VSS}
@@ -426,8 +410,8 @@ C {devices/lab_pin.sym} 2110 -440 0 1 {name=p197 sig_type=std_logic lab=BL10}
 C {devices/lab_pin.sym} 2110 -420 0 1 {name=p198 sig_type=std_logic lab=BLB10}
 C {devices/lab_pin.sym} 2110 -380 0 1 {name=p199 sig_type=std_logic lab=BL11}
 C {devices/lab_pin.sym} 2110 -360 0 1 {name=p200 sig_type=std_logic lab=BLB11}
-C {devices/lab_pin.sym} 1730 -460 0 0 {name=p201 sig_type=std_logic lab=DIN10}
-C {devices/lab_pin.sym} 1730 -440 0 0 {name=p202 sig_type=std_logic lab=DIN11}
+C {devices/lab_pin.sym} 1730 -460 0 0 {name=p201 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -440 0 0 {name=p202 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -270 0 0 {name=x18}
 C {devices/lab_pin.sym} 2110 -320 0 1 {name=p203 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -260 0 1 {name=p204 sig_type=std_logic lab=VSS}
@@ -437,8 +421,8 @@ C {devices/lab_pin.sym} 2110 -300 0 1 {name=p207 sig_type=std_logic lab=BL12}
 C {devices/lab_pin.sym} 2110 -280 0 1 {name=p208 sig_type=std_logic lab=BLB12}
 C {devices/lab_pin.sym} 2110 -240 0 1 {name=p209 sig_type=std_logic lab=BL13}
 C {devices/lab_pin.sym} 2110 -220 0 1 {name=p210 sig_type=std_logic lab=BLB13}
-C {devices/lab_pin.sym} 1730 -320 0 0 {name=p211 sig_type=std_logic lab=DIN12}
-C {devices/lab_pin.sym} 1730 -300 0 0 {name=p212 sig_type=std_logic lab=DIN13}
+C {devices/lab_pin.sym} 1730 -320 0 0 {name=p211 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 1730 -300 0 0 {name=p212 sig_type=std_logic lab=VSS}
 C {write_driver.sym} 1930 -140 0 0 {name=x19}
 C {devices/lab_pin.sym} 2110 -190 0 1 {name=p213 sig_type=std_logic lab=VDD}
 C {devices/lab_pin.sym} 2110 -130 0 1 {name=p214 sig_type=std_logic lab=VSS}
@@ -448,34 +432,8 @@ C {devices/lab_pin.sym} 2110 -170 0 1 {name=p217 sig_type=std_logic lab=BL14}
 C {devices/lab_pin.sym} 2110 -150 0 1 {name=p218 sig_type=std_logic lab=BLB14}
 C {devices/lab_pin.sym} 2110 -110 0 1 {name=p219 sig_type=std_logic lab=BL15}
 C {devices/lab_pin.sym} 2110 -90 0 1 {name=p220 sig_type=std_logic lab=BLB15}
-C {devices/lab_pin.sym} 1730 -190 0 0 {name=p221 sig_type=std_logic lab=DIN14}
+C {devices/lab_pin.sym} 1730 -190 0 0 {name=p221 sig_type=std_logic lab=VSS}
 C {devices/lab_pin.sym} 1730 -170 0 0 {name=p222 sig_type=std_logic lab=DIN15}
-C {devices/ipin.sym} 1120 -780 0 0 {name=p19 lab=DIN2}
-C {devices/lab_pin.sym} 1140 -780 0 1 {name=p20 sig_type=std_logic lab=DIN2}
-C {devices/ipin.sym} 1120 -760 0 0 {name=p21 lab=DIN3}
-C {devices/lab_pin.sym} 1140 -760 0 1 {name=p22 sig_type=std_logic lab=DIN3}
-C {devices/ipin.sym} 1290 -780 0 0 {name=p24 lab=DIN4}
-C {devices/lab_pin.sym} 1310 -780 0 1 {name=p25 sig_type=std_logic lab=DIN4}
-C {devices/ipin.sym} 1290 -760 0 0 {name=p26 lab=DIN5}
-C {devices/lab_pin.sym} 1310 -760 0 1 {name=p27 sig_type=std_logic lab=DIN5}
-C {devices/ipin.sym} 1460 -780 0 0 {name=p28 lab=DIN6}
-C {devices/lab_pin.sym} 1480 -780 0 1 {name=p29 sig_type=std_logic lab=DIN6}
-C {devices/ipin.sym} 1460 -760 0 0 {name=p79 lab=DIN7}
-C {devices/lab_pin.sym} 1480 -760 0 1 {name=p80 sig_type=std_logic lab=DIN7}
-C {devices/ipin.sym} 960 -710 0 0 {name=p81 lab=DIN8}
-C {devices/lab_pin.sym} 980 -710 0 1 {name=p82 sig_type=std_logic lab=DIN8}
-C {devices/ipin.sym} 960 -690 0 0 {name=p83 lab=DIN9}
-C {devices/lab_pin.sym} 980 -690 0 1 {name=p84 sig_type=std_logic lab=DIN9}
-C {devices/ipin.sym} 1120 -710 0 0 {name=p85 lab=DIN10}
-C {devices/lab_pin.sym} 1140 -710 0 1 {name=p86 sig_type=std_logic lab=DIN10}
-C {devices/ipin.sym} 1120 -690 0 0 {name=p87 lab=DIN11}
-C {devices/lab_pin.sym} 1140 -690 0 1 {name=p88 sig_type=std_logic lab=DIN11}
-C {devices/ipin.sym} 1290 -710 0 0 {name=p89 lab=DIN12}
-C {devices/lab_pin.sym} 1310 -710 0 1 {name=p90 sig_type=std_logic lab=DIN12}
-C {devices/ipin.sym} 1290 -690 0 0 {name=p91 lab=DIN13}
-C {devices/lab_pin.sym} 1310 -690 0 1 {name=p92 sig_type=std_logic lab=DIN13}
-C {devices/ipin.sym} 1460 -710 0 0 {name=p93 lab=DIN14}
-C {devices/lab_pin.sym} 1480 -710 0 1 {name=p94 sig_type=std_logic lab=DIN14}
 C {devices/ipin.sym} 1460 -690 0 0 {name=p95 lab=DIN15}
 C {devices/lab_pin.sym} 1480 -690 0 1 {name=p96 sig_type=std_logic lab=DIN15}
 C {sram_16w16b.sym} 380 -770 0 0 {name=x1}
