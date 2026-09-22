@@ -1,5 +1,5 @@
 ** sch_path: /home/take/Design/tr10_sram/sram/sram_2w16b_top.sch
-.subckt sram_2w16b_top VDD WLE DOUT0 VSS A0 WE DIN0 PCB DOUT15 DIN15
+.subckt sram_2w16b_top DIN0 VDD WLE WE VSS A0 DIN15 PCB DOUT0 DOUT15
 *.PININFO VDD:B WLE:I DOUT0:O VSS:B A0:I WE:I DIN0:I PCB:I DOUT15:O DIN15:I
 x2 VDD VSS WL0 WLE A0 WL1 decoder
 x4 VDD VSS PCB EQEN BL0 BLB0 BL15 BLB15 precharge

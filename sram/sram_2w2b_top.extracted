@@ -1,0 +1,144 @@
+* Created by KLayout
+*** My special header ***
+
+* cell sram_2w2b_top
+* pin A0
+* pin DIN0
+* pin DIN1
+* pin DOUT0
+* pin DOUT1
+* pin PCB
+* pin VDD
+* pin VSS
+* pin WE
+* pin WLE
+.SUBCKT sram_2w2b_top A0 DIN0 DIN1 DOUT0 DOUT1 PCB VDD VSS WE WLE
+* device instance $1 r0 *1 -77.5,208.9 PMOS
+XM$1 VDD \$32 \$33 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $2 r0 *1 -94.7,208.9 PMOS
+XM$2 VDD WLE \$32 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $3 r0 *1 -105.4,208.9 PMOS
+XM$3 VDD A0 \$32 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $4 r0 *1 83.4,207 PMOS
+XM$4 \$16 PCB VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $5 r0 *1 6.7,199.9 PMOS
+XM$5 \$25 \$28 VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=10.81p PS=12.4u PD=9u
+* device instance $6 r0 *1 12.3,199.9 PMOS
+XM$6 VDD \$25 \$28 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $7 r0 *1 6.7,207.9 PMOS
+XM$7 VDD \$31 \$30 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $8 r0 *1 12.3,207.9 PMOS
+XM$8 VDD \$30 \$31 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $9 r0 *1 -19.5,199.9 PMOS
+XM$9 \$24 \$27 VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=10.81p PS=12.4u PD=9u
+* device instance $10 r0 *1 -13.9,199.9 PMOS
+XM$10 VDD \$24 \$27 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $11 r0 *1 -19.5,207.9 PMOS
+XM$11 VDD \$34 \$29 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $12 r0 *1 -13.9,207.9 PMOS
+XM$12 VDD \$29 \$34 VDD PMOS L=1u W=3.4u AS=10.81p AD=9.52p PS=9u PD=12.4u
+* device instance $13 r0 *1 -77.5,198.9 PMOS
+XM$13 \$20 \$23 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $14 r0 *1 -94.7,198.9 PMOS
+XM$14 \$23 WLE VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $15 r0 *1 -105.4,198.9 PMOS
+XM$15 \$23 \$21 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $16 r0 *1 -71.9,98.9 PMOS
+XM$16 VDD WE \$9 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $17 r0 *1 19.7,93.4 PMOS
+XM$17 DIN1 \$9 \$15 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $18 r0 *1 85.4,187.9 PMOS
+XM$18 \$15 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $19 r0 *1 6.7,93.4 PMOS
+XM$19 \$14 \$9 \$8 VDD PMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $20 r0 *1 10.7,93.4 PMOS
+XM$20 \$8 DIN1 VDD VDD PMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $21 r0 *1 -17.9,93.4 PMOS
+XM$21 VDD DIN0 \$7 VDD PMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $22 r0 *1 -13.9,93.4 PMOS
+XM$22 \$7 \$9 \$13 VDD PMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $23 r0 *1 62.2,187.9 PMOS
+XM$23 \$13 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $24 r0 *1 -26.9,93.4 PMOS
+XM$24 \$12 \$9 DIN0 VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $25 r0 *1 91.6,106.6 PMOS
+XM$25 DOUT1 \$14 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $26 r0 *1 61.8,106.6 PMOS
+XM$26 DOUT0 \$13 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $27 r0 *1 -118.6,198.9 PMOS
+XM$27 \$21 A0 VDD VDD PMOS L=1u W=6.8u AS=19.04p AD=19.04p PS=19.2u PD=19.2u
+* device instance $28 r0 *1 68,187.9 PMOS
+XM$28 \$12 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $29 r0 *1 91.2,187.9 PMOS
+XM$29 \$14 PCB VDD VDD PMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $30 r0 *1 -79.2,236.5 NMOS
+XM$30 \$33 \$32 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $31 r0 *1 -19.5,230 NMOS
+XM$31 \$29 \$34 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $32 r0 *1 -13.9,230 NMOS
+XM$32 VSS \$29 \$34 VSS NMOS L=1u W=6.8u AS=19.02p AD=26.35p PS=14u PD=15.3u
+* device instance $33 r0 *1 -23,236.9 NMOS
+XM$33 \$29 \$33 \$12 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $34 r0 *1 -10.5,236.9 NMOS
+XM$34 \$34 \$33 \$13 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $35 r0 *1 6.7,230 NMOS
+XM$35 \$30 \$31 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $36 r0 *1 12.3,230 NMOS
+XM$36 VSS \$30 \$31 VSS NMOS L=1u W=6.8u AS=19.02p AD=26.35p PS=14u PD=15.3u
+* device instance $37 r0 *1 3.2,236.9 NMOS
+XM$37 \$30 \$33 \$14 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $38 r0 *1 15.7,236.9 NMOS
+XM$38 \$31 \$33 \$15 VSS NMOS L=1u W=5.1u AS=26.35p AD=18.36p PS=15.3u PD=17.4u
+* device instance $39 r0 *1 83.4,229.1 NMOS
+XM$39 \$16 PCB VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $40 r0 *1 -23,170.9 NMOS
+XM$40 \$12 \$20 \$24 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $41 r0 *1 -10.5,170.9 NMOS
+XM$41 \$13 \$20 \$27 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $42 r0 *1 -19.5,177.8 NMOS
+XM$42 \$24 \$27 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $43 r0 *1 -13.9,177.8 NMOS
+XM$43 \$27 \$24 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $44 r0 *1 -94.7,232.5 NMOS
+XM$44 \$32 A0 \$35 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $45 r0 *1 -94.7,236.5 NMOS
+XM$45 \$35 WLE VSS VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $46 r0 *1 -120.6,173.3 NMOS
+XM$46 VSS A0 \$21 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $47 r0 *1 3.2,170.9 NMOS
+XM$47 \$14 \$20 \$25 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $48 r0 *1 15.7,170.9 NMOS
+XM$48 \$15 \$20 \$28 VSS NMOS L=1u W=5.1u AS=18.36p AD=26.35p PS=17.4u PD=15.3u
+* device instance $49 r0 *1 6.7,177.8 NMOS
+XM$49 \$25 \$28 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $50 r0 *1 12.3,177.8 NMOS
+XM$50 \$28 \$25 VSS VSS NMOS L=1u W=6.8u AS=26.35p AD=19.02p PS=15.3u PD=14u
+* device instance $51 r0 *1 -79.2,171.3 NMOS
+XM$51 VSS \$23 \$20 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $52 r0 *1 -26.9,116.6 NMOS
+XM$52 \$12 WE DIN0 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $53 r0 *1 60.1,83 NMOS
+XM$53 VSS \$13 DOUT0 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $54 r0 *1 93.3,83 NMOS
+XM$54 VSS \$14 DOUT1 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $55 r0 *1 -13.9,116.6 NMOS
+XM$55 \$7 WE \$13 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $56 r0 *1 -71.9,76.8 NMOS
+XM$56 VSS WE \$9 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $57 r0 *1 -94.7,171.3 NMOS
+XM$57 VSS WLE \$22 VSS NMOS L=1u W=6.8u AS=19.04p AD=10.2p PS=19.2u PD=9.8u
+* device instance $58 r0 *1 -94.7,175.3 NMOS
+XM$58 \$22 \$21 \$23 VSS NMOS L=1u W=6.8u AS=10.2p AD=19.04p PS=9.8u PD=19.2u
+* device instance $59 r0 *1 10.7,71.3 NMOS
+XM$59 \$8 DIN1 VSS VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $60 r0 *1 -17.9,71.3 NMOS
+XM$60 VSS DIN0 \$7 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $61 r0 *1 6.7,116.6 NMOS
+XM$61 \$14 WE \$8 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $62 r0 *1 65,165.9 NMOS
+XM$62 \$13 \$16 \$12 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+* device instance $63 r0 *1 19.7,116.6 NMOS
+XM$63 DIN1 WE \$15 VSS NMOS L=1u W=5.2u AS=14.56p AD=14.56p PS=16u PD=16u
+* device instance $64 r0 *1 88.2,165.9 NMOS
+XM$64 \$15 \$16 \$14 VSS NMOS L=1u W=3.4u AS=9.52p AD=9.52p PS=12.4u PD=12.4u
+.ENDS sram_2w2b_top
